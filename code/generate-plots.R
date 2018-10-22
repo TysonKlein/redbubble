@@ -34,4 +34,5 @@ MC.boxPlot <- ggplot() +
   geom_text(data = melted, aes(x=variable, y=10),label = round(100*melted$value))
   scale_y_continuous(breaks = round(seq(0, max(results), by = 100),2))
   
+MC.boxPlot  
 save(MC.boxPlot, file = "rda/MC-boxPlot.rda")

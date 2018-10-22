@@ -9,32 +9,39 @@ output: github_document
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-## R Markdown
+## Redbubble.com online sales from TysonK
 
-RedBubble sales follow a gamma distribution (like any inter-arrival time or daily sales total), and can therefore be modelled with a Monte Carlo simulation. The benefit of a Monte Carlo simulation is that it can lend more information into current sales figures beyond just a mean or average daily sales figure.
+RedBubble is one of the longest running and diverse Print-On-Demand (POD) art websites in the world, offering artists everywhere a chance to make money by selling their works on a range of products without having to get involved with any of the logistics. As a homebody with a penchant for Photoshop, I was naturally drawn to it.
 
-The standard deviation of a daily sales figure is calculated as a weighted average of the Standard deviation of the following:
-30% of the past 25 days + 
-30% of the past 15 days + 
-30% of the past 10 days + 
-10% of the past 5 days 
+About a year and a half ago I opened my Redubble store. I am certainly not the most creative person on the website, but I understood that an easy way to make a ton of relevant designs that would both be in demand and safe to make would be to focus on National Parks. I made a some good templates, and with a few notable exceptions, filled my store with a couple hundred designs that had something to do with the great outdoors.
 
-And the mean sales figure per day is simply a 7% aplha adjusted mean (0.07*Daily Total + (1-0.07)*Previous Mean)
+The money started to come in, and as I tweaked some designs and parameters within my store, I realized that this could be a legitimate income stream. Beyond that, some interesting patterns began to emerge. For example, although Redbubble offers designs to be printed on products ranging from coffee mugs to T shirts to throw pillows, by far my most sucessfull item was the sticker.
 
-Using this model, the 95% confidence interval for the gamma distribution contains just over 94% of all data points.
+To date, stickers account for 98.5% of all items sold and 96.2% of all revenue.
 
-A Monte Carlo simulation then can accurately show how 'lucky' the sales of each previous month actually was, and a rudimentary forecast can be made using the yearly trend of sales data (National Parks and RedBubble as a website).
-
-The Mean and Standard Deviation of the data points ahead of today are calculated as:
-
-mean = Mean of (Current Date - 365) * Yearly Growth Factor
-Standard Deviation = mean * Deviation Factor
-
-The yearly growth factor is linear and constant (relatively) with an average value of 2.12
-The deviation factor is the proportion of mean that Standard Deviation typically takes up, or about 0.55
-
-```{r generate-plots, echo = FALSE}
-load("rda/MC-boxPlot.rda")
-MC.boxPlot
+Below is the revenue per day of my store since May 1st, 2017, measured in Canadian Dollars.
+```{r daily sales plot, echo = FALSE}
+load("rda/daily-sales-plot.rda")
+daily.sales.plot
 ```
 
+And here is the same graph for daily items sold.
+```{r daily units plot, echo = FALSE}
+load("rda/daily-units-plot.rda")
+daily.units.plot
+```
+
+As you can see by the similarity, each item sells for approximately the same amount of money. This is mostly due to the volume of sticker sales above other products, but the other interesting thing about these graphs is the bump on the far right side of each graph. It is a bit hard to tell, but the red bump rises a bit higher than the blue bump. This can be summarized in the below graph, average dollars per item
+
+```{r daily dollar per sale, echo=FALSE}
+load("rda/daily-dollar-per-sale-plot.rda")
+daily.dollar.per.sale.plot
+```
+
+This is the result of a feature on Redbubble that has garnered a lot of praise from artists on the platform. Artists are able to dictate whatever profit margin they choose. These margins can be set product by product, and even design by design, but the overwhelming majority of people choose to leave this at the default setting of 20%. This means they make 20% of the manufacturer cost, making each product cost 1.2X the manufacturer cost.
+
+**This is a horrible idea.** The people at Redbubble are a group of smart cookies and they know that the best way to sell more everything is to make the artist margin as small as possible. My approach? **crank it up to 11**
+
+within the first month of my time on Redbubble, I had my margin set at a stupid 90%. My thoughts were that I could see how it changed the nature of my sales data and find a happy middle ground. Not only did my profit go way up, but *my daily units hardly budged*. The chart above shows a few changes to this margin: Mid October 2017 up to 100%, mid March 2018 up to 125%, then an ill-advised change to 70% in April shortly followed by a correction to 150%, where the margin has been ever since.
+
+Those numbers might not mean much, but from the lowest point to now, the cost of a single sticker in my shop has gone from about $2.50 to $6.00. 

@@ -7,7 +7,7 @@ setwd("..")
 
 load("rda/mean-and-sd.rda")
 
-simulations <- 10
+simulations <- 100
 sd.factor <- 0.55
 yrGrowth.factor <- 2.12
 days.ahead <- 1*365 + 15
