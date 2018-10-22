@@ -1,23 +1,14 @@
----
-title: "Redbubble Monthly Forecast"
-author: "Tyson Klein"
-date: "October 22, 2018"
-output: github_document
----
+Redbubble Monthly Forecast
+================
+Tyson Klein
+October 22, 2018
 
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
-```
-
-## R Markdown
+R Markdown
+----------
 
 RedBubble sales follow a gamma distribution (like any inter-arrival time or daily sales total), and can therefore be modelled with a Monte Carlo simulation. The benefit of a Monte Carlo simulation is that it can lend more information into current sales figures beyond just a mean or average daily sales figure.
 
-The standard deviation of a daily sales figure is calculated as a weighted average of the Standard deviation of the following:
-30% of the past 25 days + 
-30% of the past 15 days + 
-30% of the past 10 days + 
-10% of the past 5 days 
+The standard deviation of a daily sales figure is calculated as a weighted average of the Standard deviation of the following: 30% of the past 25 days + 30% of the past 15 days + 30% of the past 10 days + 10% of the past 5 days
 
 And the mean sales figure per day is simply a 7% aplha adjusted mean (0.07*Daily Total + (1-0.07)*Previous Mean)
 
@@ -27,14 +18,8 @@ A Monte Carlo simulation then can accurately show how 'lucky' the sales of each 
 
 The Mean and Standard Deviation of the data points ahead of today are calculated as:
 
-mean = Mean of (Current Date - 365) * Yearly Growth Factor
-Standard Deviation = mean * Deviation Factor
+mean = Mean of (Current Date - 365) \* Yearly Growth Factor Standard Deviation = mean \* Deviation Factor
 
-The yearly growth factor is linear and constant (relatively) with an average value of 2.12
-The deviation factor is the proportion of mean that Standard Deviation typically takes up, or about 0.55
+The yearly growth factor is linear and constant (relatively) with an average value of 2.12 The deviation factor is the proportion of mean that Standard Deviation typically takes up, or about 0.55
 
-```{r generate-plots, echo = FALSE}
-load("rda/MC-boxPlot.rda")
-MC.boxPlot
-```
-
+![](Redbubble_Report_files/figure-markdown_github/generate-plots-1.png)
