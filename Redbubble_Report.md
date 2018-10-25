@@ -1,29 +1,26 @@
-Redbubble Monthly Forecast
+Harvard Data Science Capstone
 ================
 Tyson Klein
 October 22, 2018
 
-Redbubble.com online sales from TysonK
---------------------------------------
+Analysis of RedBubble.com sales by TysonK
+=========================================
+
+An Overview
+-----------
 
 RedBubble is one of the longest running and diverse Print-On-Demand (POD) art websites in the world, offering artists everywhere a chance to make money by selling their works on a range of products without having to get involved with any of the logistics. As a homebody with a penchant for Photoshop, I was naturally drawn to it.
 
-About a year and a half ago I opened my Redubble store. I am certainly not the most creative person on the website, but I understood that an easy way to make a ton of relevant designs that would both be in demand and safe to make would be to focus on National Parks. I made a some good templates, and with a few notable exceptions, filled my store with a couple hundred designs that had something to do with the great outdoors.
+Redbubble, like many of its contemporaries, has a 'passive' approach for the artist. You upload your designs as images, and they do everything else. This means that all sales made are pure profit on the artists side.
+
+About a year and a half ago I opened [my Redbubble store](https://www.redbubble.com/people/tysonk?ref=account-nav-dropdown&asc=u). The specifics of my store aren't entirely important to this report, but there are some important details that will emerge again later. Most designs I uploaded had something to do with National Parks from English speaking countries around the world, and the remainder of the designs are an eclectic mix of outdoors-themed and quirky pruducts meant to appeal to a general audience.
 
 The money started to come in, and as I tweaked some designs and parameters within my store, I realized that this could be a legitimate income stream. Beyond that, some interesting patterns began to emerge. For example, although Redbubble offers designs to be printed on products ranging from coffee mugs to T shirts to throw pillows, by far my most sucessfull item was the sticker.
 
 To date, stickers account for 98.5% of all items sold and 96.2% of all revenue.
 
-Below is the revenue per day of my store since May 1st, 2017, measured in Canadian Dollars. ![](Redbubble_Report_files/figure-markdown_github/daily%20sales%20plot-1.png)
+Below is the profit per day of my store since May 1st, 2017, measured in Canadian Dollars(red), and the same graph instead measuring daily items sold (blue). <img src="Redbubble_Report_files/figure-markdown_github/daily sales plot-1.png" style="display: block; margin: auto;" />
 
-And here is the same graph for daily items sold. ![](Redbubble_Report_files/figure-markdown_github/daily%20units%20plot-1.png)
+<img src="Redbubble_Report_files/figure-markdown_github/daily units plot-1.png" style="display: block; margin: auto;" />
 
-As you can see by the similarity, each item sells for approximately the same amount of money. This is mostly due to the volume of sticker sales above other products, but the other interesting thing about these graphs is the bump on the far right side of each graph. It is a bit hard to tell, but the red bump rises a bit higher than the blue bump. This can be summarized in the below graph, average dollars per item
-
-![](Redbubble_Report_files/figure-markdown_github/daily%20dollar%20per%20sale-1.png)
-
-This is the result of a feature on Redbubble that has garnered a lot of praise from artists on the platform. Artists are able to dictate whatever profit margin they choose. These margins can be set product by product, and even design by design, but the overwhelming majority of people choose to leave this at the default setting of 20%. This means they make 20% of the manufacturer cost, making each product cost 1.2X the manufacturer cost.
-
-**This is a horrible idea.** The people at Redbubble are a group of smart cookies and they know that the best way to sell more everything is to make the artist margin as small as possible. My approach? **crank it up to 11**
-
-within the first month of my time on Redbubble, I had my margin set at a stupid 90%. My thoughts were that I could see how it changed the nature of my sales data and find a happy middle ground. Not only did my profit go way up, but *my daily units hardly budged*. The chart above shows a few changes to this margin: Mid October 2017 up to 100%, mid May 2018 up to 125%, then an ill-advised change to 70% shortly followed by a correction to 150%, where the margin has been ever since.
+<img src="Redbubble_Report_files/figure-markdown_github/Monthly plot-1.png" style="display: block; margin: auto;" />
