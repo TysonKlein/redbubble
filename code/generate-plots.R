@@ -3,77 +3,114 @@ library(ggplot2)
 library(magrittr)
 library(lubridate)
 library(dplyr)
-library(VGAM)
 require(reshape2)
 
-script.dir <- dirname(sys.frame(1)$ofile)
-setwd(script.dir)
+
+#Set the path to be correctt
+if (is.null(rstudioapi::getActiveDocumentContext()))
+{
+  script.dir <- dirname(sys.frame(1)$ofile)
+  wd <- script.dir
+  setwd(wd)
+}else setwd(dirname(rstudioapi::getActiveDocumentContext()$path))
 setwd("..")
+
+tail(daily.data)
 
 #First, generate the daily plots
 load(file = "rda/daily-data.rda")
-load("rda/best-model.rda")
 
-daily.data <- daily.data %>%
-  mutate(units.CI.upper = mean.units*qdagum(0.1, scale = fit.dagum$estimate["scale"], shape1.a = fit.dagum$estimate["shape1.a"], shape2.p = fit.dagum$estimate["shape2.p"]),
-         units.CI.lower = mean.units*qdagum(0.9, scale = fit.dagum$estimate["scale"], shape1.a = fit.dagum$estimate["shape1.a"], shape2.p = fit.dagum$estimate["shape2.p"]),
-         sales.CI.upper = mean.sales*qdagum(0.1, scale = fit.dagum$estimate["scale"], shape1.a = fit.dagum$estimate["shape1.a"], shape2.p = fit.dagum$estimate["shape2.p"]),
-         sales.CI.lower = mean.sales*qdagum(0.9, scale = fit.dagum$estimate["scale"], shape1.a = fit.dagum$estimate["shape1.a"], shape2.p = fit.dagum$estimate["shape2.p"]))
+#Set the plot theme for all following plots
+plot.theme <- theme(axis.text.x=element_text(angle=60, hjust=1),
+                    panel.background = element_rect(fill = "grey95"))
 
+#Plot for Daily Sales
 daily.sales.plot <- ggplot() + 
+  geom_point(data = daily.data, colour = 'red', size = 3, alpha = 0.3, aes(x=Date, y = sales)) +
+  scale_x_date(date_breaks = "1 month", date_labels =  "%b %Y", minor_breaks = "1 month") +
+  scale_y_continuous(name = "$CAD", breaks = seq(0, (round(max(daily.data$sales-5)/10)+1)*10, 10)) +
+  plot.theme
+save(daily.sales.plot, file = "rda/daily-sales-plot.rda")
+
+#Plot for Daily Sales + Mean sales + CI
+daily.sales.plot.A <- ggplot() + 
   geom_point(data = daily.data, colour = 'red', size = 3, alpha = 0.3, aes(x=Date, y = sales)) +
   geom_line(data = daily.data, colour = 'red', size = 1.5, aes(x=Date, y = mean.sales)) +
   geom_line(data = daily.data, colour = 'red',alpha = 0.3, size = 1.5, aes(x=Date, y = sales.CI.upper)) +
   geom_line(data = daily.data, colour = 'red',alpha = 0.3, size = 1.5, aes(x=Date, y = sales.CI.lower)) +
   scale_x_date(date_breaks = "1 month", date_labels =  "%b %Y", minor_breaks = "1 month") +
   scale_y_continuous(name = "$CAD", breaks = seq(0, (round(max(daily.data$sales-5)/10)+1)*10, 10)) +
-  theme(axis.text.x=element_text(angle=60, hjust=1))
-save(daily.sales.plot, file = "rda/daily-sales-plot.rda")
+  plot.theme
+save(daily.sales.plot.A, file = "rda/daily-sales-plot-A.rda")
 
+#Plot for Daily Users
+daily.users.plot <- ggplot() + 
+  geom_point(data = daily.data, colour = 'turquoise 4', size = 3, alpha = 0.3, aes(x=Date, y = users)) +
+  scale_x_date(date_breaks = "1 month", date_labels =  "%b %Y", minor_breaks = "1 month") +
+  scale_y_continuous(name = "Users", breaks = seq(0, (round(max(daily.data$users-5)/10)+1)*10, 10)) +
+  plot.theme
+save(daily.users.plot, file = "rda/daily-users-plot.rda")
+
+#Plot for Daily Users normalized
+daily.users.normalized.plot <- ggplot() + 
+  geom_point(data = daily.data, colour = 'turquoise 4', size = 3, alpha = 0.3, aes(x=Date, y = users/mean.users)) +
+  scale_x_date(date_breaks = "1 month", date_labels =  "%b %Y", minor_breaks = "1 month") +
+  scale_y_continuous(name = "Normalized Users") +
+  plot.theme
+save(daily.users.normalized.plot, file = "rda/daily-users-normalized-plot.rda")
+
+#Plot for Daily Users + Mean users + CI
+daily.users.plot.A <- ggplot() + 
+  geom_point(data = daily.data, colour = 'turquoise 4', size = 3, alpha = 0.3, aes(x=Date, y = users)) +
+  geom_line(data = daily.data, colour = 'turquoise 4', size = 1.5, aes(x=Date, y = mean.users)) +
+  geom_line(data = daily.data, colour = 'turquoise 4',alpha = 0.3, size = 1.5, aes(x=Date, y = users.CI.upper)) +
+  geom_line(data = daily.data, colour = 'turquoise 4',alpha = 0.3, size = 1.5, aes(x=Date, y = users.CI.lower)) +
+  scale_x_date(date_breaks = "1 month", date_labels =  "%b %Y", minor_breaks = "1 month") +
+  scale_y_continuous(name = "Users", breaks = seq(0, (round(max(daily.data$users-5)/10)+1)*10, 10)) +
+  plot.theme
+save(daily.users.plot.A, file = "rda/daily-users-plot-A.rda")
+
+#Plot for Daily orders + mean orders
+daily.orders.plot <- ggplot() + 
+  geom_point(data = daily.data, colour = 'orange 4', size = 3, alpha = 0.3, aes(x=Date, y = orders)) +
+  geom_line(data = daily.data, colour = 'orange 4', size = 1.5, aes(x=Date, y = mean.orders)) +
+  scale_x_date(date_breaks = "1 month", date_labels =  "%b %Y", minor_breaks = "1 month") +
+  scale_y_continuous(name = "Orders", breaks = seq(0, (round(max(daily.data$orders-5)/10)+1)*10, 10)) +
+  plot.theme
+save(daily.orders.plot, file = "rda/daily-orders-plot.rda")
+
+#Plot for Daily units + mean units
 daily.units.plot <- ggplot() + 
   geom_point(data = daily.data, colour = 'blue', size = 3, alpha = 0.3, aes(x=Date, y = units)) +
   geom_line(data = daily.data, colour = 'blue', size = 1.5, aes(x=Date, y = mean.units)) +
-  geom_line(data = daily.data, colour = 'blue',alpha = 0.3, size = 1.5, aes(x=Date, y = units.CI.upper)) +
-  geom_line(data = daily.data, colour = 'blue',alpha = 0.3, size = 1.5, aes(x=Date, y = units.CI.lower)) +
   scale_x_date(date_breaks = "1 month", date_labels =  "%b %Y", minor_breaks = "1 month") +
   scale_y_continuous(name = "units", breaks = seq(0, (round(max(daily.data$units-5)/10)+1)*10, 10)) +
-  theme(axis.text.x=element_text(angle=60, hjust=1))
+  plot.theme
 save(daily.units.plot, file = "rda/daily-units-plot.rda")
 
-daily.dollar.per.sale.plot <- ggplot() + 
-  geom_line(data = daily.data, colour = "turquoise 4", size = 1.5, aes(x=Date, y = mean.sales/mean.units)) +
+#Plot for Daily $ per Order
+daily.dollar.per.order.plot <- ggplot() + 
+  geom_line(data = daily.data, colour = "purple", size = 1.5, aes(x=Date, y = mean.sales/mean.orders)) +
   scale_x_date(date_breaks = "1 month", date_labels =  "%b %Y", minor_breaks = "1 month") +
-  scale_y_continuous(name = "$ Cad per unit", breaks = seq(0, 3, 0.5)) +
+  scale_y_continuous(name = "$ Cad per Order", breaks = seq(0, 3, 0.5)) +
   expand_limits(y = 0) +
-  theme(axis.text.x=element_text(angle=60, hjust=1))
-save(daily.dollar.per.sale.plot, file = "rda/daily-dollar-per-sale-plot.rda")
+  plot.theme
+save(daily.dollar.per.order.plot, file = "rda/daily-dollar-per-order-plot.rda")
 
-#Generate the binned monthly sales plot
-load(file = "rda/redbubble-MC-forecast.rda")
+#Plot for Daily Orders per User
+daily.order.per.user.plot <- ggplot() + 
+  geom_line(data = daily.data, colour = "turquoise 4", size = 1.5, aes(x=Date, y = mean.orders/mean.users)) +
+  scale_x_date(date_breaks = "1 month", date_labels =  "%b %Y", minor_breaks = "1 month") +
+  scale_y_continuous(name = "Orders per User", breaks = seq(0, 1, 0.1)) +
+  expand_limits(y = 0) +
+  plot.theme
+save(daily.order.per.user.plot, file = "rda/daily-order-per-user-plot.rda")
 
-realMonths <- c(166.48, 274.25, 320.98, 453.91, 344.39, 340.81,
-                465.41, 536.69, 326.99, 280.21, 303.37, 298.61,
-                357.58, 512.02, 778.18, 843.55, 787.08, 325.93)
-numRealMonths <- round(length(realMonths))
-realMonths <- as.data.frame(t(realMonths))
-names(realMonths) <-format(single$month[seq(1, numRealMonths, 1)],"%b%y")
-
-col_names <- colnames(realMonths)
-bigger <- data.frame(1)
-for (i in 1:ncol(realMonths)) {
-bigger[i] <-  sum(redbubble.MC.forecast[,col_names[i]]<realMonths[,col_names[i]])/nrow(redbubble.MC.forecast)
-}
-names(bigger) <-names(realMonths)
-melted <- melt(bigger)
-
-redbubble.MC.forecast[,ncol(redbubble.MC.forecast)] <- NULL
-
-MC.boxPlot <- ggplot() + 
-  geom_boxplot(data = melt(redbubble.MC.forecast), aes(x=variable, y = value), fill="slateblue", alpha=0.2) +
-  geom_point(data = melt(realMonths), colour = 'red', size = 2, aes(x=variable, y = value)) +
-  geom_text(data = melted, aes(x=variable, y=10),label = round(100*melted$value)) +
-  scale_y_continuous(breaks = round(seq(0, max(results), by = 100),2)) +
-  theme(axis.text.x=element_text(angle=60, hjust=1))
-MC.boxPlot
-  
-save(MC.boxPlot, file = "rda/MC-boxPlot.rda")
+#Plot for Daily Units per Order
+daily.units.per.order.plot <- ggplot() + 
+  geom_line(data = daily.data, colour = "blue 4", size = 1.5, aes(x=Date, y = mean.units/mean.orders)) +
+  scale_x_date(date_breaks = "1 month", date_labels =  "%b %Y", minor_breaks = "1 month") +
+  scale_y_continuous(name = "Units per Order", breaks = seq(1, 1.5, 0.1)) +
+  expand_limits(y = 1) +
+  plot.theme
+save(daily.units.per.order.plot, file = "rda/daily-units-per-order-plot.rda")
