@@ -89,9 +89,9 @@ daily.sales.plot.A
 daily.users.plot.A
 ```
 
-##More Factors to Consider
+##Factors to Consider
 
-A very important thing to understand about this redbubble store is that unique users have a direct relationship with daily sales. There are a few steps invloved to get from one to the other, and the easiest way to illustrate this path is to consider an average customer.
+A very important thing to understand about a RedBubble store is that unique users have a direct relationship with daily sales. There are a few steps invloved to get from one to the other, and the easiest way to illustrate this path is to consider an average customer.
 
 Let's say Jim has decided he wants to buy a sticker for [Banff National Park](https://www.redbubble.com/people/tysonk/works/33710123-banff-national-park-basic?asc=u&p=sticker) after a recent holiday. Jim finds the RedBubble storefront for my sticker, and the first stop on the path occurs. **Jim decides if he wants to buy this product**. This interaction, which I call the *should I?* factor, is a random variable with possible outcomes of *yes* or *no*. 
 
@@ -101,7 +101,7 @@ Now that Jim has, say, a sticker and a T-shirt in his cart, he checks out to com
 
 The sale is now complete. Jim, the **user**, has completed an **order** with the sticker and T-shirt representing multiple **units**, for some **profit**. This directional flow of actions results in much more varience on the profit end compared to the user end, and explains #4 on our list of noticed trends.
 
-##Controlling these Factors
+##Analysis of Factors
 
 ###Exposure
 
@@ -168,38 +168,4 @@ Why then are the majority of my orders just single stickers? The benefit of havi
 
 Unfortunately, just like exposure, there is very little that can be done to influence this factor. The only possible thing I have control over for this *how many?* factor is to make various series of related designs on my store, and making related designs navigable to each other via RedBubble's Collection feature.
 
-```{r daily units plot,fig.align='center', echo = FALSE}
-load("rda/daily-units-plot.rda")
-daily.units.plot
-```
-
-```{r daily orders plot,fig.align='center', echo = FALSE}
-load("rda/daily-orders-plot.rda")
-daily.orders.plot
-```
-
-Combining some of these graphs can give insight as to how changing these interim random variables (*should I?*, *how many?*, *what cost?*) either intentionally or from outside forces changes the profitability of the store.
-
-
-```{r daily $ per Order plot,fig.align='center', echo = FALSE}
-load("rda/daily-dollar-per-order-plot.rda")
-daily.dollar.per.order.plot
-```
-
-
-```{r daily Units per order plot,fig.align='center', echo = FALSE}
-load("rda/daily-units-per-order-plot.rda")
-daily.units.per.order.plot
-```
-
-```{r table, echo = FALSE}
-load("rda/daily-units-per-order-plot.rda")
-n <- 100
-x <- rnorm(n)
-y <- 2*x + rnorm(n)
-out <- lm(y ~ x)
-library(knitr)
-kable(summary(out)$coef, digits=2)
-```
-
-hi
+##Coming Soon

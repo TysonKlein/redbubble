@@ -67,10 +67,10 @@ Below are the original sales and user charts, now with the rolling average (dark
 
 <img src="Readme_files/figure-markdown_github/daily sales and user plot with rolling average and CI-1.png" style="display: block; margin: auto;" /><img src="Readme_files/figure-markdown_github/daily sales and user plot with rolling average and CI-2.png" style="display: block; margin: auto;" />
 
-More Factors to Consider
-------------------------
+Factors to Consider
+-------------------
 
-A very important thing to understand about this redbubble store is that unique users have a direct relationship with daily sales. There are a few steps invloved to get from one to the other, and the easiest way to illustrate this path is to consider an average customer.
+A very important thing to understand about a RedBubble store is that unique users have a direct relationship with daily sales. There are a few steps invloved to get from one to the other, and the easiest way to illustrate this path is to consider an average customer.
 
 Let's say Jim has decided he wants to buy a sticker for [Banff National Park](https://www.redbubble.com/people/tysonk/works/33710123-banff-national-park-basic?asc=u&p=sticker) after a recent holiday. Jim finds the RedBubble storefront for my sticker, and the first stop on the path occurs. **Jim decides if he wants to buy this product**. This interaction, which I call the *should I?* factor, is a random variable with possible outcomes of *yes* or *no*.
 
@@ -80,8 +80,8 @@ Now that Jim has, say, a sticker and a T-shirt in his cart, he checks out to com
 
 The sale is now complete. Jim, the **user**, has completed an **order** with the sticker and T-shirt representing multiple **units**, for some **profit**. This directional flow of actions results in much more varience on the profit end compared to the user end, and explains \#4 on our list of noticed trends.
 
-Controlling these Factors
--------------------------
+Analysis of Factors
+-------------------
 
 ### Exposure
 
@@ -131,19 +131,5 @@ Why then are the majority of my orders just single stickers? The benefit of havi
 
 Unfortunately, just like exposure, there is very little that can be done to influence this factor. The only possible thing I have control over for this *how many?* factor is to make various series of related designs on my store, and making related designs navigable to each other via RedBubble's Collection feature.
 
-<img src="Readme_files/figure-markdown_github/daily units plot-1.png" style="display: block; margin: auto;" />
-
-<img src="Readme_files/figure-markdown_github/daily orders plot-1.png" style="display: block; margin: auto;" />
-
-Combining some of these graphs can give insight as to how changing these interim random variables (*should I?*, *how many?*, *what cost?*) either intentionally or from outside forces changes the profitability of the store.
-
-<img src="Readme_files/figure-markdown_github/daily $ per Order plot-1.png" style="display: block; margin: auto;" />
-
-<img src="Readme_files/figure-markdown_github/daily Units per order plot-1.png" style="display: block; margin: auto;" />
-
-|             |  Estimate|  Std. Error|  t value|  Pr(&gt;|t|)|
-|-------------|---------:|-----------:|--------:|------------:|
-| (Intercept) |     -0.10|         0.1|    -0.98|         0.33|
-| x           |      2.01|         0.1|    21.10|         0.00|
-
-hi
+Coming Soon
+-----------
