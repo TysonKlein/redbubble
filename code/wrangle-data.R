@@ -1,3 +1,4 @@
+library(VGAM)#for dagum functions
 library(tidyverse)
 library(lubridate)
 
@@ -11,6 +12,8 @@ if (is.null(rstudioapi::getActiveDocumentContext()))
 setwd("..")
 
 select <- dplyr::select
+
+tail(daily.data)
 
 #load Data from csv files
 artist.sales.report <- read.csv("data/artist-sales-report.csv", header = TRUE)
@@ -30,8 +33,27 @@ wrangled.data <- wrangled.data %>% select(Date, Order.Number, Product.Type,
                                           Destination.State, Qty, Retail.Price, 
                                           Manufacturers.Cut, Artists.Cut)
 
-#Save basic Wrangled data
+#Create data sets for the price and discount comparisom for stickers
+price.stratified <- wrangled.data %>% filter((Date > as.Date("2018-6-15") & Date < as.Date("2018-9-15")) | (Date > as.Date("2018-10-20")), Fulfillment.Country == "United States",Product.Type == "Sticker", Artists.Cut < 4.8)
+price.stratified$Artists.Cut <- price.stratified$Artists.Cut/price.stratified$Qty
+full.price <- mean(price.stratified$Artists.Cut[price.stratified$Artists.Cut >= 3.8])
+full.price
+discounts <- data.frame(percent = as.character(seq(0, 50, 5)), cost = seq(full.price, full.price*0.5, -full.price*0.05))
+discounts$percent <- paste(discounts$percent,"% discount","")
+discounts$percent[1] <- "Full price"
+mean(price.stratified$Artists.Cut < 3.8 & price.stratified$Artists.Cut < 2.5)
+
+#Save them
+save(price.stratified, file = "rda/price-stratified.rda")
+save(discounts, file  = "rda/discounts.rda")
+
+plot(price.stratification$Artists.Cut)
+order.data <- wrangled.data %>% group_by(Order.Number) %>% summarise(units = sum(Qty))
+mean(order.data$units)
+
+#Save basic Wrangled data and order data
 save(wrangled.data, file = "rda/wrangled-data.rda")
+save(order.data, file  = "rda/order-data.rda")
 
 #Create adjusted data with daily mean and standard deviation
 alpha = 0.08
@@ -119,6 +141,9 @@ create.model <- function(LM, data)
 }
 
 #Daily trend data wrangling from google trends
+google.trends.report <- read.csv("data/google-trends-data.csv", header = TRUE)
+google.trends.report$Week <- as.Date(google.trends.report$Week)
+
 orders.per.user <- daily.data$mean.orders/daily.data$mean.users
 daily.trend <- data.frame()
 daily.trend <- google.trends.report[rep(seq_len(nrow(google.trends.report)), 7), ]
@@ -180,6 +205,13 @@ load("rda/best-fit-dist-sales.rda")
 dagum.sales <- fit.dagum
 load("rda/best-fit-dist-users.rda")
 dagum.users <- fit.dagum
+
+weekly <- data.frame(tot = daily.data$sales[7:nrow(daily.data)])
+weekly
+for (i in 1:nrow(weekly)) {
+  weekly$tot[i] <- sum(daily.data$sales[i:(i+7)])
+}
+plot(weekly$tot)
 
 CI.value <- 0.9
 daily.data <- daily.data %>%

@@ -18,7 +18,7 @@ setwd("..")
 load(file = "rda/daily-data.rda")
 
 #Selecting the sample required for fitting a distribution
-fitting.sample <- daily.data$users/daily.data$mean.users
+fitting.sample <- daily.data$sales/daily.data$mean.sales
 #this can also be done for Sales, orders or units with similar results
 
 #Removing 0 values and replacing them with practically identical ones
@@ -47,11 +47,11 @@ ks.results <- data.frame("Distribution" =
                            c(ks.test.norm$p.value, ks.test.gamma$p.value, ks.test.weibull$p.value, ks.test.dagum$p.value, ks.test.gev$p.value))
 #Results for the Kolmogorov-Smirnov fitness tests
 ks.results
-save(ks.results, file = "rda/ks-tests-users.rda")
-save(fit.dagum, file = "rda/best-fit-dist-users.rda")
+save(ks.results, file = "rda/ks-tests-sales.rda")
+save(fit.dagum, file = "rda/best-fit-dist-sales.rda")
 
 # Compare fits 
-fits.users <- list(fit.norm, fit.gamma, fit.weibull, fit.dagum, fit.gev)
+fits.sales <- list(fit.norm, fit.gamma, fit.weibull, fit.dagum, fit.gev)
 
 #Save fits for Users, can also be done for other factors
-save(fits.users, file = "rda/fitted-distributions-users.rda")
+save(fits.sales, file = "rda/fitted-distributions-sales.rda")
