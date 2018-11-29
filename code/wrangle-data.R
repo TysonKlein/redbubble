@@ -13,8 +13,6 @@ setwd("..")
 
 select <- dplyr::select
 
-tail(daily.data)
-
 #load Data from csv files
 artist.sales.report <- read.csv("data/artist-sales-report.csv", header = TRUE)
 store.user.report <- read.csv("data/store-users.csv", header = TRUE)
@@ -41,15 +39,12 @@ full.price
 discounts <- data.frame(percent = as.character(seq(0, 50, 5)), cost = seq(full.price, full.price*0.5, -full.price*0.05))
 discounts$percent <- paste(discounts$percent,"% discount","")
 discounts$percent[1] <- "Full price"
-mean(price.stratified$Artists.Cut < 3.8 & price.stratified$Artists.Cut < 2.5)
 
 #Save them
 save(price.stratified, file = "rda/price-stratified.rda")
 save(discounts, file  = "rda/discounts.rda")
 
-plot(price.stratification$Artists.Cut)
 order.data <- wrangled.data %>% group_by(Order.Number) %>% summarise(units = sum(Qty))
-mean(order.data$units)
 
 #Save basic Wrangled data and order data
 save(wrangled.data, file = "rda/wrangled-data.rda")
@@ -200,25 +195,7 @@ model <- data.frame(Date = as.Date(min(as.numeric(daily.data$Date)):max(as.numer
 plot(model$forecast[1:nrow(daily.data)], compare.data, xlab = cor(model$forecast[1:nrow(daily.data)], compare.data))
 mean(model$forecast[match( as.Date("2018-11-15"),model$Date):match( as.Date("2018-12-15"),model$Date)])
 
-#Confidence intervals
-load("rda/best-fit-dist-sales.rda")
-dagum.sales <- fit.dagum
-load("rda/best-fit-dist-users.rda")
-dagum.users <- fit.dagum
-
-weekly <- data.frame(tot = daily.data$sales[7:nrow(daily.data)])
-weekly
-for (i in 1:nrow(weekly)) {
-  weekly$tot[i] <- sum(daily.data$sales[i:(i+7)])
-}
-plot(weekly$tot)
-
-CI.value <- 0.9
-daily.data <- daily.data %>%
-  mutate(users.CI.upper = mean.users*qdagum(1-(1-CI.value)/2, scale = dagum.users$estimate["scale"], shape1.a = dagum.users$estimate["shape1.a"], shape2.p = dagum.users$estimate["shape2.p"]),
-         users.CI.lower = mean.users*qdagum((1-CI.value)/2, scale = dagum.users$estimate["scale"], shape1.a = dagum.users$estimate["shape1.a"], shape2.p = dagum.users$estimate["shape2.p"]),
-         sales.CI.upper = mean.sales*qdagum(1-(1-CI.value)/2, scale = dagum.sales$estimate["scale"], shape1.a = dagum.sales$estimate["shape1.a"], shape2.p = dagum.sales$estimate["shape2.p"]),
-         sales.CI.lower = mean.sales*qdagum((1-CI.value)/2, scale = dagum.sales$estimate["scale"], shape1.a = dagum.sales$estimate["shape1.a"], shape2.p = dagum.sales$estimate["shape2.p"]))
+tail(daily.data)
 
 #Save daily
 save(daily.data, file = "rda/daily-data.rda")

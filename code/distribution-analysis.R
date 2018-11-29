@@ -17,8 +17,16 @@ setwd("..")
 #Load in the most recent data to analyze
 load(file = "rda/daily-data.rda")
 
+for (I in 1:2) {
 #Selecting the sample required for fitting a distribution
-fitting.sample <- daily.data$sales/daily.data$mean.sales
+  if(I == 1)
+  {
+    fitting.sample <- daily.data$sales/daily.data$mean.sales
+  }
+  if(I == 2)
+  {
+    fitting.sample <- daily.data$users/daily.data$mean.users
+  }
 #this can also be done for Sales, orders or units with similar results
 
 #Removing 0 values and replacing them with practically identical ones
@@ -47,11 +55,49 @@ ks.results <- data.frame("Distribution" =
                            c(ks.test.norm$p.value, ks.test.gamma$p.value, ks.test.weibull$p.value, ks.test.dagum$p.value, ks.test.gev$p.value))
 #Results for the Kolmogorov-Smirnov fitness tests
 ks.results
-save(ks.results, file = "rda/ks-tests-sales.rda")
-save(fit.dagum, file = "rda/best-fit-dist-sales.rda")
 
-# Compare fits 
-fits.sales <- list(fit.norm, fit.gamma, fit.weibull, fit.dagum, fit.gev)
+if(I == 1)
+  {
+    save(ks.results, file = "rda/ks-tests-sales.rda")
+    save(fit.dagum, file = "rda/best-fit-dist-sales.rda")
+    dagum.sales <- fit.dagum
 
-#Save fits for Users, can also be done for other factors
-save(fits.sales, file = "rda/fitted-distributions-sales.rda")
+    # Compare fits 
+    fits.sales <- list(fit.norm, fit.gamma, fit.weibull, fit.dagum, fit.gev)
+
+    #Save fits for Users, can also be done for other factors
+    save(fits.sales, file = "rda/fitted-distributions-sales.rda")
+  }
+  if(I == 2)
+  {
+    save(ks.results, file = "rda/ks-tests-users.rda")
+    save(fit.dagum, file = "rda/best-fit-dist-users.rda")
+    dagum.users <- fit.dagum
+
+    # Compare fits 
+    fits.users <- list(fit.norm, fit.gamma, fit.weibull, fit.dagum, fit.gev)
+
+    #Save fits for Users, can also be done for other factors
+    save(fits.users, file = "rda/fitted-distributions-users.rda")
+  }
+
+}
+
+#Confidence intervals
+weekly <- data.frame(tot = daily.data$sales[7:nrow(daily.data)])
+weekly
+for (i in 1:nrow(weekly)) {
+  weekly$tot[i] <- sum(daily.data$sales[i:(i+7)])
+}
+plot(weekly$tot)
+
+CI.value <- 0.9
+daily.data <- daily.data %>%
+  mutate(users.CI.upper = mean.users*qdagum(1-(1-CI.value)/2, scale = dagum.users$estimate["scale"], shape1.a = dagum.users$estimate["shape1.a"], shape2.p = dagum.users$estimate["shape2.p"]),
+         users.CI.lower = mean.users*qdagum((1-CI.value)/2, scale = dagum.users$estimate["scale"], shape1.a = dagum.users$estimate["shape1.a"], shape2.p = dagum.users$estimate["shape2.p"]),
+         sales.CI.upper = mean.sales*qdagum(1-(1-CI.value)/2, scale = dagum.sales$estimate["scale"], shape1.a = dagum.sales$estimate["shape1.a"], shape2.p = dagum.sales$estimate["shape2.p"]),
+         sales.CI.lower = mean.sales*qdagum((1-CI.value)/2, scale = dagum.sales$estimate["scale"], shape1.a = dagum.sales$estimate["shape1.a"], shape2.p = dagum.sales$estimate["shape2.p"]))
+
+#Save daily
+save(daily.data, file = "rda/daily-data.rda")
+write.csv(daily.data, file = "data/daily-data.csv")

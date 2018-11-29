@@ -14,6 +14,10 @@ library(SpatialExtremes)#for gev functions
 
 #Analysis of RedBubble.com sales by TysonK
 
+##Running this Analysis
+To recreate this analysis at home, you can clone this repo and open this project in Rstudio, then run the R scripts in the following order:
+package-installer.r -> wrangle-data.r -> distribution-analysis.r -> generat-plots.r -> then Knit Readme.Rmd
+
 ##An Overview
 
 RedBubble is one of the longest running and diverse Print-On-Demand (POD) art websites in the world, offering artists everywhere the opportunity to make money by selling their works on a range of products without having to get involved with any of the logistics.

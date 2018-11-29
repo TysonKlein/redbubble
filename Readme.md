@@ -6,6 +6,11 @@ October 22, 2018
 Analysis of RedBubble.com sales by TysonK
 =========================================
 
+Running this Analysis
+---------------------
+
+To recreate this analysis at home, you can clone this repo and open this project in Rstudio, then run the R scripts in the following order: package-installer.r -&gt; wrangle-data.r -&gt; distribution-analysis.r -&gt; generat-plots.r -&gt; then Knit Readme.Rmd
+
 An Overview
 -----------
 
