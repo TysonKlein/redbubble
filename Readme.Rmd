@@ -124,7 +124,7 @@ For the average design in my store, the sales have slowly improved over time as 
 
 ###Should I?
 
-Assuming the exposure of our design leads a user to click on it, the next factor to consider is *should I?*.  As mentioned before, this is a random variable with possible outcomes *yes* or *no*. These can instead be thought of as *1* or *0*, with an expected value somewhere in between. This value represents the **probability of a user making a purchase**and is easily represented as the *average daily orders / average daily users*.
+Assuming the exposure of our design leads a user to click on it, the next factor to consider is *should I?*.  As mentioned before, this is a random variable with possible outcomes *yes* or *no*. These can instead be thought of as *1* or *0*, with an expected value somewhere in between. This value represents the **probability of a user making a purchase** and is easily represented as the *average daily orders / average daily users*.
 
 ```{r daily Order per user plot,fig.align='center', echo = FALSE, fig.width=10, fig.height=4}
 load("rda/daily-order-per-user-plot.rda")

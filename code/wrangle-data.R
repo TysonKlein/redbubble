@@ -195,8 +195,6 @@ model <- data.frame(Date = as.Date(min(as.numeric(daily.data$Date)):max(as.numer
 plot(model$forecast[1:nrow(daily.data)], compare.data, xlab = cor(model$forecast[1:nrow(daily.data)], compare.data))
 mean(model$forecast[match( as.Date("2018-11-15"),model$Date):match( as.Date("2018-12-15"),model$Date)])
 
-tail(daily.data)
-
 #Save daily
 save(daily.data, file = "rda/daily-data.rda")
 write.csv(daily.data, file = "data/daily-data.csv")
