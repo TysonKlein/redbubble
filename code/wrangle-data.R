@@ -54,7 +54,7 @@ save(order.data, file  = "rda/order-data.rda")
 alpha = 0.08
 daily.data.temp <- wrangled.data %>% 
   group_by(Date) %>%
-  summarise(sales = sum(Artists.Cut), units = sum(Qty), users = 0, orders = length(Order.Number),
+  summarise(sales = sum(Artists.Cut), units = sum(Qty), users = 0, orders = length(unique(Order.Number)),
             mean.sales = 2, mean.units = 1.5, mean.users = 0, variation.sales = 1.1, growth.sales = NA, growth.units = NA, growth.users = NA)
 
 daily.data <- data.frame(Date = seq(as.Date('2017-4-1'), as.Date(max(wrangled.data$Date)), 1), sales = 0, units = 0, users = 0, orders = 0, mean.sales = 2, mean.units = 1.5, mean.users = 0, mean.orders = 0, variation.sales = 1.1, growth.sales = NA, growth.units = NA, growth.users = NA, growth.orders = NA)
