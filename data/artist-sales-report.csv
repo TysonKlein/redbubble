@@ -4305,3 +4305,152 @@ Order.Date,Ship.Date,Work,Order.Number,Product.Type,Fulfillment.Country,Destinat
 2018-12-13,15-Dec-18,Yosemite National Park 3,24413729,T-Shirt,United States,United States,MO,to be paid,1,CA$23.25,CA$15.50,CA$7.75
 2018-12-13,14-Dec-18,Zion National Park 2,24410716,Sticker,United States,United States,CA,paid,1,CA$3.68,CA$1.61,CA$2.07
 2018-12-13,14-Dec-18,Glacier National Park 3,24396428,Sticker,United States,United States,MT,paid,2,CA$10.34,CA$4.15,CA$6.19
+2018-12-23,27-Dec-18,Great Smoky Mountains National Park 4,24768858,Sticker,United States,United States,FL,to be paid,1,CA$5.22,CA$2.09,CA$3.13
+2018-12-23,26-Dec-18,Grand Canyon National Park 2,24767414,Sticker,United States,United States,GA,to be paid,1,CA$5.22,CA$2.09,CA$3.13
+2018-12-23,26-Dec-18,Grand Canyon National Park 2,24760118,Sticker,United States,United States,TX,to be paid,1,CA$5.22,CA$2.09,CA$3.13
+2018-12-23,27-Dec-18,Cuyahoga Valley National Park 2,24759032,Sticker,United States,United States,IN,to be paid,1,CA$7.44,CA$3.27,CA$4.17
+2018-12-23,26-Dec-18,Joshua Tree National Park 2,24757998,Sticker,United States,United States,CA,to be paid,1,CA$3.72,CA$1.62,CA$2.10
+2018-12-22,26-Dec-18,Great Smoky Mountains National Park 4,24755446,Sticker,United States,United States,TN,to be paid,1,CA$3.48,CA$1.38,CA$2.10
+2018-12-22,26-Dec-18,Peanut Butter,24752819,Sticker,United States,United States,CA,to be paid,1,CA$3.72,CA$1.62,CA$2.10
+2018-12-21,26-Dec-18,Peanut Butter,24737459,Sticker,United States,United States,MI,to be paid,1,CA$3.68,CA$1.58,CA$2.10
+2018-12-21,22-Dec-18,Zion National Park 2,24733718,Sticker,United States,United States,OH,to be paid,1,CA$5.22,CA$2.09,CA$3.13
+2018-12-21,26-Dec-18,Theodore Roosevelt National Park 2,24729550,Sticker,United States,United States,PA,to be paid,1,CA$3.71,CA$1.61,CA$2.10
+2018-12-21,26-Dec-18,Peanut Butter,24728965,Sticker,United States,United States,NJ,to be paid,1,CA$5.56,CA$2.43,CA$3.13
+2018-12-20,26-Dec-18,Grand Canyon National Park 2,24722950,Sticker,United States,United States,FL,to be paid,1,CA$5.21,CA$2.09,CA$3.12
+2018-12-20,21-Dec-18,Zion National Park 2,24711846,Sticker,United States,United States,MN,to be paid,1,CA$3.75,CA$1.66,CA$2.09
+2018-12-20,21-Dec-18,Banff National Park 2,24709703,Sticker,United States,United States,MA,to be paid,1,CA$3.48,CA$1.39,CA$2.09
+2018-12-20,21-Dec-18,Grand Canyon National Park 2,24709703,Sticker,United States,United States,MA,to be paid,1,CA$3.48,CA$1.39,CA$2.09
+2018-12-19,21-Dec-18,Grand Canyon National Park 2,24696497,Sticker,United States,United States,PA,to be paid,1,CA$3.70,CA$1.61,CA$2.09
+2018-12-19,20-Dec-18,Hawaii Volcanoes National Park 2,24683600,Sticker,United States,United States,CO,to be paid,1,CA$3.74,CA$1.65,CA$2.09
+2018-12-19,20-Dec-18,Grand Canyon National Park 2,24682278,Sticker,United States,United States,VA,to be paid,1,CA$3.47,CA$1.38,CA$2.09
+2018-12-19,20-Dec-18,Haleakala National Park 2,24682278,Sticker,United States,United States,VA,to be paid,1,CA$3.47,CA$1.38,CA$2.09
+2018-12-18,20-Dec-18,New Forest National Park,24680575,Sticker,United Kingdom,United Kingdom,ENGLAND,to be paid,1,CA$2.74,CA$1.22,CA$1.52
+2018-12-18,20-Dec-18,Grand Canyon National Park 2,24676163,Sticker,United States,United States,UT,to be paid,1,CA$3.46,CA$1.38,CA$2.08
+2018-12-18,20-Dec-18,Great Smoky Mountains National Park 4,24669522,Sticker,United States,United States,WI,to be paid,1,CA$3.65,CA$1.57,CA$2.08
+2018-12-18,20-Dec-18,Grand Canyon National Park 2,24665054,Sticker,United States,United States,NH,to be paid,1,CA$3.46,CA$1.38,CA$2.08
+2018-12-18,20-Dec-18,Cape Cod national sea shore,24657947,Sticker,United States,United States,NY,to be paid,1,CA$3.46,CA$1.38,CA$2.08
+2018-12-18,20-Dec-18,Vatnajökull National Park Simple,24657947,Sticker,United States,United States,NY,to be paid,1,CA$3.46,CA$1.38,CA$2.08
+2018-12-18,20-Dec-18,Golden Gate National Recreation Area,24657947,Sticker,United States,United States,NY,to be paid,1,CA$3.46,CA$1.38,CA$2.08
+2018-12-18,19-Dec-18,Grand Canyon National Park 2,24649540,Sticker,United States,United States,IL,to be paid,1,CA$5.64,CA$2.53,CA$3.11
+2018-12-18,19-Dec-18,Golden Gate National Recreation Area,24648478,Sticker,United States,United States,WI,to be paid,1,CA$3.65,CA$1.57,CA$2.08
+2018-12-18,19-Dec-18,Colorado National Monument,24648478,Sticker,United States,United States,WI,to be paid,1,CA$3.65,CA$1.57,CA$2.08
+2018-12-18,18-Dec-18,Glacier National Park 2,24645422,Sticker,United States,United States,CA,to be paid,1,CA$5.57,CA$2.46,CA$3.11
+2018-12-17,19-Dec-18,Grand Canyon National Park 2,24639827,Sticker,United States,United States,WI,to be paid,1,CA$5.46,CA$2.36,CA$3.10
+2018-12-17,19-Dec-18,Great Smoky Mountains National Park 4,24634432,Sticker,United States,United States,RI,to be paid,1,CA$5.18,CA$2.08,CA$3.10
+2018-12-17,18-Dec-18,Joshua Tree National Park 2,24629797,Sticker,United States,United States,ND,to be paid,1,CA$3.69,CA$1.62,CA$2.07
+2018-12-17,18-Dec-18,Idaho,24626507,Sticker,United States,United States,NV,to be paid,1,CA$3.73,CA$1.66,CA$2.07
+2018-12-17,19-Dec-18,Glacier National Park 2,24623685,Sticker,United States,United States,CA,to be paid,1,CA$5.55,CA$2.45,CA$3.10
+2018-12-17,18-Dec-18,Zion National Park 2,24621411,Sticker,United States,United States,OH,to be paid,1,CA$3.45,CA$1.38,CA$2.07
+2018-12-17,18-Dec-18,Grand Canyon National Park 2,24618867,Sticker,United States,United States,AR,to be paid,1,CA$3.45,CA$1.38,CA$2.07
+2018-12-17,18-Dec-18,Banff National Park 2,24612700,Sticker,United States,United States,TX,to be paid,1,CA$3.45,CA$1.38,CA$2.07
+2018-12-17,18-Dec-18,Zion National Park 2,24611411,Sticker,United States,United States,IN,to be paid,2,CA$7.38,CA$3.23,CA$4.15
+2018-12-17,18-Dec-18,Montezuma Castle National Monument,24611153,Sticker,United States,United States,CA,to be paid,1,CA$3.69,CA$1.62,CA$2.07
+2018-12-17,18-Dec-18,Zion National Park 2,24610849,Sticker,Netherlands,Germany,BY,to be paid,2,CA$7.32,CA$3.27,CA$4.05
+2018-12-17,19-Dec-18,Zion National Park 2,24609832,Sticker,Australia,New Zealand,AUCKLAND,to be paid,1,CA$2.63,CA$1.05,CA$1.58
+2018-12-17,18-Dec-18,Grand Canyon National Park 2,24608448,Sticker,United States,United States,MD,to be paid,1,CA$3.65,CA$1.58,CA$2.07
+2018-12-17,18-Dec-18,Peanut Butter,24599870,Sticker,United States,United States,CA,to be paid,1,CA$3.69,CA$1.62,CA$2.07
+2018-12-16,18-Dec-18,Idaho,24596111,Sticker,United States,United States,ID,to be paid,1,CA$16.53,CA$6.61,CA$9.92
+2018-12-16,18-Dec-18,Haleakala National Park 2,24595303,Sticker,United States,United States,NJ,to be paid,1,CA$3.68,CA$1.61,CA$2.07
+2018-12-16,18-Dec-18,Peanut Butter,24579667,Sticker,United States,United States,MD,to be paid,1,CA$3.65,CA$1.58,CA$2.07
+2018-12-16,18-Dec-18,Peanut Butter,24579018,Sticker,United States,United States,SC,to be paid,1,CA$3.69,CA$1.62,CA$2.07
+2018-12-16,17-Dec-18,Glacier National Park 2,24575435,Sticker,United States,United States,OH,to be paid,1,CA$3.44,CA$1.37,CA$2.07
+2019-01-01,03-Jan-19,Bryce Canyon National Park 2,24931892,Sticker,United States,United States,MN,to be paid,1,CA$3.78,CA$1.67,CA$2.11
+2018-12-31,03-Jan-19,Peanut Butter,24931365,Sticker,United States,United States,MO,to be paid,1,CA$5.27,CA$2.11,CA$3.16
+2018-12-31,03-Jan-19,Badlands National Park 2,24929244,Sticker,Canada,Canada,ON,to be paid,1,CA$3.24,CA$1.52,CA$1.72
+2018-12-31,03-Jan-19,Banff National Park 2,24929244,Sticker,Canada,Canada,ON,to be paid,2,CA$6.48,CA$3.04,CA$3.44
+2018-12-31,03-Jan-19,Jasper National Park 2,24929244,Sticker,Canada,Canada,ON,to be paid,1,CA$3.24,CA$1.52,CA$1.72
+2018-12-31,03-Jan-19,Yoho National Park 2,24929244,Sticker,Canada,Canada,ON,to be paid,1,CA$3.24,CA$1.52,CA$1.72
+2018-12-31,03-Jan-19,Glacier National Park 2,24929244,Sticker,Canada,Canada,ON,to be paid,1,CA$3.24,CA$1.52,CA$1.72
+2018-12-31,03-Jan-19,Grand Canyon National Park 2,24926685,Sticker,Netherlands,Germany,none,to be paid,1,CA$3.77,CA$1.68,CA$2.09
+2018-12-31,03-Jan-19,Glacier National Park 2,24925542,Sticker,United States,United States,FL,to be paid,1,CA$3.51,CA$1.40,CA$2.11
+2018-12-31,02-Jan-19,Acadia National Park 2,24920694,Sticker,United States,United States,IN,to be paid,1,CA$5.64,CA$2.48,CA$3.16
+2018-12-30,03-Jan-19,Peanut Butter,24916698,Sticker,United States,United States,NY,to be paid,1,CA$3.51,CA$1.40,CA$2.11
+2018-12-30,02-Jan-19,Kootenay National Park Simple,24916357,Sticker,Canada,Canada,AB,to be paid,1,CA$4.52,CA$1.94,CA$2.58
+2018-12-30,01-Jan-19,Joshua Tree National Park 2,24910499,Sticker,United States,United States,CA,to be paid,1,CA$3.76,CA$1.65,CA$2.11
+2018-12-30,01-Jan-19,Yosemite National Park 2,24910499,Sticker,United States,United States,CA,to be paid,1,CA$3.76,CA$1.65,CA$2.11
+2018-12-30,01-Jan-19,Waterton Lakes National Park 2,24910499,Sticker,United States,United States,CA,to be paid,1,CA$3.76,CA$1.65,CA$2.11
+2018-12-30,01-Jan-19,Yellowstone National Park 2,24910499,Sticker,United States,United States,CA,to be paid,1,CA$3.76,CA$1.65,CA$2.11
+2018-12-30,01-Jan-19,Bryce Canyon National Park 2,24910499,Sticker,United States,United States,CA,to be paid,1,CA$3.76,CA$1.65,CA$2.11
+2018-12-30,01-Jan-19,Badlands National Park 2,24910499,Sticker,United States,United States,CA,to be paid,1,CA$3.76,CA$1.65,CA$2.11
+2018-12-30,01-Jan-19,Grand Teton National Park 2,24910499,Sticker,United States,United States,CA,to be paid,1,CA$3.76,CA$1.65,CA$2.11
+2018-12-30,01-Jan-19,Glacier National Park 2,24910499,Sticker,United States,United States,CA,to be paid,1,CA$3.76,CA$1.65,CA$2.11
+2018-12-30,01-Jan-19,Grand Canyon National Park 2,24910499,Sticker,United States,United States,CA,to be paid,1,CA$3.76,CA$1.65,CA$2.11
+2018-12-30,01-Jan-19,Zion National Park 2,24910499,Sticker,United States,United States,CA,to be paid,1,CA$3.76,CA$1.65,CA$2.11
+2018-12-30,03-Jan-19,Hawaii Volcanoes National Park 2,24909688,Sticker,United States,United States,MA,to be paid,1,CA$3.51,CA$1.40,CA$2.11
+2018-12-30,01-Jan-19,Peanut Butter,24907374,Sticker,United States,United States,WA,to be paid,1,CA$3.84,CA$1.73,CA$2.11
+2018-12-29,31-Dec-18,Grand Canyon National Park 2,24894155,Sticker,United States,United States,GA,to be paid,1,CA$3.51,CA$1.40,CA$2.11
+2018-12-29,31-Dec-18,Illinois,24893608,Sticker,United States,United States,GA,to be paid,1,CA$3.51,CA$1.40,CA$2.11
+2018-12-29,02-Jan-19,Zion National Park 2,24889388,Sticker,United States,United States,MN,to be paid,1,CA$3.78,CA$1.67,CA$2.11
+2018-12-29,31-Dec-18,Joshua Tree National Park 2,24886535,Sticker,United States,United States,CO,to be paid,1,CA$3.78,CA$1.67,CA$2.11
+2018-12-29,31-Dec-18,Banff National Park 2,24885473,Sticker,United States,United States,LA,to be paid,1,CA$3.51,CA$1.40,CA$2.11
+2018-12-28,31-Dec-18,Grand Canyon National Park 2,24882222,Sticker,United States,United States,CO,to be paid,3,CA$11.34,CA$5.02,CA$6.32
+2018-12-28,03-Jan-19,Kruger National Park,24881077,Sticker,United States,United States,UT,to be paid,1,CA$3.51,CA$1.40,CA$2.11
+2018-12-28,31-Dec-18,Grand Canyon National Park 2,24878623,Sticker,United States,United States,IN,to be paid,1,CA$5.63,CA$2.47,CA$3.16
+2018-12-28,28-Dec-18,Zion National Park 2,24869712,Sticker,United States,United States,CA,to be paid,1,CA$5.65,CA$2.49,CA$3.16
+2018-12-28,28-Dec-18,Wicklow Mountains National Park Simple,24869659,Sticker,United States,United States,CA,to be paid,1,CA$3.76,CA$1.65,CA$2.11
+2018-12-28,31-Dec-18,Grand Canyon National Park 2,24866569,Sticker,United States,United States,NE,to be paid,1,CA$3.51,CA$1.40,CA$2.11
+2018-12-28,31-Dec-18,Zion National Park 2,24866569,Sticker,United States,United States,NE,to be paid,1,CA$3.51,CA$1.40,CA$2.11
+2018-12-27,31-Dec-18,Banff National Park 2,24846242,Sticker,United States,United States,MA,to be paid,2,CA$7.02,CA$2.81,CA$4.21
+2018-12-27,28-Dec-18,Zion National Park 2,24845363,Sticker,United States,United States,OH,to be paid,1,CA$3.51,CA$1.41,CA$2.10
+2018-12-27,28-Dec-18,Zion National Park 2,24835989,Sticker,United States,United States,NJ,to be paid,1,CA$3.71,CA$1.61,CA$2.10
+2018-12-26,28-Dec-18,Peanut Butter,24833878,Sticker,United States,United States,NY,to be paid,1,CA$3.48,CA$1.38,CA$2.10
+2018-12-26,28-Dec-18,Peanut Butter,24830392,Sticker,Canada,Canada,SK,to be paid,1,CA$3.03,CA$1.31,CA$1.72
+2018-12-26,28-Dec-18,Grand Canyon National Park 2,24818477,Sticker,Netherlands,France,IDF,to be paid,1,CA$3.75,CA$1.67,CA$2.08
+2018-12-26,27-Dec-18,Banff National Park Basic,24809914,Sticker,United States,United States,MN,to be paid,1,CA$3.75,CA$1.65,CA$2.10
+2018-12-25,27-Dec-18,Hawaii Volcanoes National Park 2,24806779,Sticker,United States,United States,CA,to be paid,1,CA$3.72,CA$1.62,CA$2.10
+2018-12-25,27-Dec-18,Zion National Park 2,24796237,Sticker,United States,United States,KS,to be paid,1,CA$3.48,CA$1.38,CA$2.10
+2018-12-25,26-Dec-18,Cuyahoga Valley National Park 2,24792764,Sticker,United States,United States,OH,to be paid,1,CA$3.48,CA$1.38,CA$2.10
+2018-12-25,27-Dec-18,Peanut Butter,24786403,Sticker,United States,United States,NY,to be paid,1,CA$3.48,CA$1.38,CA$2.10
+2018-12-24,27-Dec-18,Peanut Butter,24783016,Sticker,United States,United States,CA,to be paid,2,CA$7.44,CA$3.25,CA$4.19
+2018-12-23,27-Dec-18,Yellowstone National Park 2,24769223,Sticker,United States,United States,PA,to be paid,1,CA$3.71,CA$1.61,CA$2.10
+2018-12-23,27-Dec-18,Grand Canyon National Park 2,24769223,Sticker,United States,United States,PA,to be paid,1,CA$3.71,CA$1.61,CA$2.10
+2019-01-07,N/A,Saskatchewan,25036513,Sticker,Check our help center,United States,GA,pending,1,CA$3.69,CA$1.61,CA$2.08
+2019-01-07,N/A,Peanut Butter,25035165,Sticker,United States,United States,CA,pending,1,CA$5.54,CA$2.44,CA$3.10
+2019-01-07,N/A,Banff National Park 2,25035083,Sticker,United States,United States,NJ,pending,1,CA$3.68,CA$1.60,CA$2.08
+2019-01-07,N/A,White Sands National Monument,25035082,Sticker,United States,United States,CA,pending,1,CA$3.69,CA$1.61,CA$2.08
+2019-01-07,N/A,Grand Canyon National Park 2,25035082,Sticker,United States,United States,CA,pending,1,CA$3.69,CA$1.61,CA$2.08
+2019-01-07,N/A,Zion National Park 2,25034767,Sticker,United States,United States,MT,pending,1,CA$3.45,CA$1.37,CA$2.08
+2019-01-07,N/A,Zion National Park,25033775,Sticker,United States,United States,KY,pending,1,CA$3.65,CA$1.57,CA$2.08
+2019-01-07,N/A,Grand Canyon National Park,25030941,Sticker,United States,United States,CO,pending,2,CA$7.52,CA$3.35,CA$4.17
+2019-01-06,N/A,Great Smoky Mountains National Park 4,25027531,Sticker,United States,United States,TN,pending,1,CA$5.56,CA$2.23,CA$3.33
+2019-01-06,N/A,Uluru-Kata Tjuta National Park,25024675,Sticker,United States,United States,UT,pending,1,CA$3.73,CA$1.64,CA$2.09
+2019-01-06,N/A,Waterton Lakes National Park 2,25023467,Sticker,United States,United States,MO,pending,1,CA$3.48,CA$1.39,CA$2.09
+2019-01-06,N/A,Glacier National Park 2,25023467,Sticker,United States,United States,MO,pending,1,CA$3.48,CA$1.39,CA$2.09
+2019-01-06,N/A,Banff National Park 2,25019379,Sticker,United States,United States,CA,pending,1,CA$3.73,CA$1.64,CA$2.09
+2019-01-06,N/A,Zion National Park 2,25017962,Sticker,United States,United States,WA,pending,2,CA$7.60,CA$3.43,CA$4.17
+2019-01-06,N/A,Haleakala National Park 2,25017373,Sticker,United States,United States,WA,pending,1,CA$6.95,CA$2.78,CA$4.17
+2019-01-06,N/A,Sriracha,25015964,Sticker,United States,United States,WA,pending,1,CA$3.80,CA$1.71,CA$2.09
+2019-01-06,N/A,Grand Canyon National Park 2,25015622,Sticker,United States,United States,CA,pending,1,CA$3.73,CA$1.64,CA$2.09
+2019-01-05,N/A,Kruger National Park,25012410,Sticker,United States,United States,CA,pending,1,CA$5.60,CA$2.47,CA$3.13
+2019-01-05,N/A,Grand Canyon National Park 2,25011805,Sticker,United States,United States,NC,pending,1,CA$5.59,CA$2.46,CA$3.13
+2019-01-05,N/A,Yellowstone National Park 2,25010571,Sticker,United States,United States,AL,pending,1,CA$3.77,CA$1.68,CA$2.09
+2019-01-05,N/A,Yosemite National Park 3,25004145,Sticker,United Kingdom,Isle of Man,Select State/Province,pending,2,CA$6.84,CA$2.74,CA$4.10
+2019-01-05,N/A,Grand Canyon National Park 2,25004145,Sticker,United Kingdom,Isle of Man,Select State/Province,pending,2,CA$6.84,CA$2.74,CA$4.10
+2019-01-05,N/A,Zion National Park 2,25004145,Sticker,United Kingdom,Isle of Man,Select State/Province,pending,2,CA$6.84,CA$2.74,CA$4.10
+2019-01-05,N/A,Cairngorms National Park Simple,25003284,Sticker,United Kingdom,United Kingdom,Dumfries and Galloway,pending,1,CA$5.51,CA$2.44,CA$3.07
+2019-01-05,N/A,Grand Canyon National Park 2,24998245,Sticker,United States,United States,CO,pending,1,CA$3.76,CA$1.67,CA$2.09
+2019-01-05,N/A,Cape Breton Highlands National Park Simple,24996437,Sticker,United States,United States,ME,pending,1,CA$7.32,CA$3.15,CA$4.17
+2019-01-04,N/A,Colorado National Monument,24994759,Sticker,United States,United States,CA,pending,1,CA$3.73,CA$1.64,CA$2.09
+2019-01-04,N/A,Zion National Park 2,24993586,Sticker,United States,United States,MI,pending,1,CA$5.53,CA$2.40,CA$3.13
+2019-01-04,N/A,Sriracha,24992543,Sticker,United States,United States,CO,pending,1,CA$3.76,CA$1.67,CA$2.09
+2019-01-04,N/A,Waterton Lakes National Park,24991200,Sticker,Canada,Canada,AB,pending,1,CA$4.52,CA$1.94,CA$2.58
+2019-01-04,N/A,Mt Rainier National Park 2,24984590,Sticker,United States,United States,IL,pending,1,CA$3.79,CA$1.70,CA$2.09
+2019-01-04,N/A,Zion National Park 2,24984590,Sticker,United States,United States,IL,pending,1,CA$3.79,CA$1.70,CA$2.09
+2019-01-04,N/A,Zion National Park 2,24981926,Sticker,United States,United States,NJ,pending,1,CA$3.71,CA$1.62,CA$2.09
+2019-01-03,N/A,Cedar Breaks National Monument,24977212,Sticker,United States,United States,UT,pending,1,CA$5.28,CA$2.12,CA$3.16
+2019-01-03,N/A,Joshua Tree National Park 2,24976041,Sticker,United States,United States,DE,pending,1,CA$7.01,CA$2.80,CA$4.21
+2019-01-03,N/A,Hawaii,24974482,Sticker,United States,United States,IN,pending,1,CA$3.76,CA$1.65,CA$2.11
+2019-01-03,04-Jan-19,Great Smoky Mountains National Park 4,24970208,Sticker,United States,United States,ID,to be paid,1,CA$5.28,CA$2.12,CA$3.16
+2019-01-03,03-Jan-19,Arizona,24966248,Sticker,United States,United States,CA,to be paid,1,CA$3.76,CA$1.65,CA$2.11
+2019-01-02,03-Jan-19,Yosemite National Park 2,24960462,Sticker,United States,United States,CA,to be paid,1,CA$3.76,CA$1.65,CA$2.11
+2019-01-02,03-Jan-19,Zion National Park 2,24960462,Sticker,United States,United States,CA,to be paid,1,CA$3.76,CA$1.65,CA$2.11
+2019-01-02,03-Jan-19,Sequoia National Park Simple,24959414,Sticker,United States,United States,CA,to be paid,1,CA$3.76,CA$1.65,CA$2.11
+2019-01-02,03-Jan-19,Sequoia National Park 2,24959414,Sticker,United States,United States,CA,to be paid,1,CA$3.76,CA$1.65,CA$2.11
+2019-01-02,04-Jan-19,Glacier National Park 2,24956670,Sticker,United States,United States,NE,to be paid,1,CA$5.27,CA$2.11,CA$3.16
+2019-01-02,N/A,Coffee,24951667,Sticker,Australia,Australia,QLD,pending,1,CA$2.74,CA$1.17,CA$1.57
+2019-01-02,03-Jan-19,Peanut Butter,24949501,Sticker,United States,United States,NM,to be paid,1,CA$3.51,CA$1.40,CA$2.11
+2019-01-02,04-Jan-19,Joshua Tree National Park 2,24947166,Sticker,United States,United States,AZ,to be paid,1,CA$3.51,CA$1.40,CA$2.11
+2019-01-01,03-Jan-19,Cape Cod national sea shore,24935953,Sticker,United States,United States,CA,to be paid,1,CA$5.65,CA$2.49,CA$3.16
+2019-01-01,03-Jan-19,Grand Canyon National Park,24931892,Sticker,United States,United States,MN,to be paid,1,CA$3.78,CA$1.67,CA$2.11
+2019-01-01,03-Jan-19,Badlands National Park 2,24931892,Sticker,United States,United States,MN,to be paid,1,CA$3.78,CA$1.67,CA$2.11
+2019-01-01,03-Jan-19,Zion National Park 2,24931892,Sticker,United States,United States,MN,to be paid,1,CA$3.78,CA$1.67,CA$2.11
