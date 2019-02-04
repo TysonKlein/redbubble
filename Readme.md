@@ -52,11 +52,11 @@ As you can see from these plots, these functions all look very similar, although
 
 | Distribution |  Test.Statistic|  P.value|
 |:-------------|---------------:|--------:|
-| Normal       |          0.0477|   0.1212|
-| Gamma        |          0.0311|   0.5910|
-| Weibull      |          0.0598|   0.0243|
-| Dagum        |          0.0156|   0.9983|
-| GEV          |          0.0273|   0.7462|
+| Normal       |          0.0457|   0.1349|
+| Gamma        |          0.0295|   0.6284|
+| Weibull      |          0.0578|   0.0269|
+| Dagum        |          0.0144|   0.9994|
+| GEV          |          0.0270|   0.7329|
 
 While the KS test only eliminated the Weibull distribution on a p &lt; 0.05 threshold, we can see that the KS test also supports our theory that the data fits a Dagum distribution very well.
 
