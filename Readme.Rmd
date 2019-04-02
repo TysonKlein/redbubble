@@ -2,7 +2,7 @@
 title: "Harvard Data Science Capstone"
 author: "Tyson Klein"
 date: "October 22, 2018"
-output: github_document
+output: pdf_document
 ---
 
 ```{r setup, include=FALSE}

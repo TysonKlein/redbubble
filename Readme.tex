@@ -97,17 +97,17 @@ TysonK}\label{analysis-of-redbubble.com-sales-by-tysonk}
 To recreate this analysis at home, you can clone this repo and open this
 project in Rstudio, then run the R scripts in the following order:
 package-installer.r -\textgreater{} wrangle-data.r -\textgreater{}
-distribution-analysis.r -\textgreater{} generat-plots.r -\textgreater{}
+distribution-analysis.r -\textgreater{} generate-plots.r -\textgreater{}
 then Knit Readme.Rmd
 
-\subsection{An Overview}\label{an-overview}
+\subsection{An Introdution}\label{an-introdution}
 
 RedBubble is one of the longest running and diverse Print-On-Demand
 (POD) art websites in the world, offering artists everywhere the
 opportunity to make money by selling their works on a range of products
 without having to get involved with any of the logistics.
 
-Redbubble, like many of its contemporaries, has a `passive' approach for
+RedBubble, like many of its contemporaries, has a `passive' approach for
 the artist. You upload your designs as images and they do everything
 else. This means that all sales made are pure profit on the artists
 side.
@@ -116,15 +116,15 @@ About a year and a half ago I opened
 \href{https://www.redbubble.com/people/tysonk?ref=account-nav-dropdown\&asc=u}{my
 Redbubble store}. The specifics of my store aren't entirely important to
 this report, but there are some important details that will emerge again
-later. Most designs I uploaded had something to do with National Parks
+later. Most designs in my store have something to do with National Parks
 from English speaking countries around the world, and the remainder of
-the designs are an eclectic mix of outdoors-themed and quirky pruducts
+the designs are an eclectic mix of outdoors-themed and quirky products
 meant to appeal to a general audience.
 
 My store began to gain traction and some interesting patterns began to
-emerge. For example, although Redbubble offers designs to be printed on
+emerge. For example, although RedBubble offers designs to be printed on
 products ranging from coffee mugs to T shirts to throw pillows, by far
-my most sucessfull item was the sticker.
+my most successful item was the sticker.
 
 To date, stickers account for 98.5\% of all items sold and 96.2\% of all
 profit.
@@ -139,42 +139,42 @@ users (turquoise).
 
 \begin{center}\includegraphics{Readme_files/figure-latex/daily sales and user plot-2} \end{center}
 
-Clearly a trend exists with both of these datasets. First, there are
-some noticable peaks and valleys that seem to line up with both. These
+Clearly a trend exists with both data sets. First, there are some
+noticeable peaks and valleys that seem to line up with both. These
 represent busy and slow periods for the store, but before we can better
-quantify \emph{how} busy or slow, this data has to be better understood
+quantify \emph{how} busy or slow, this data must be better understood
 and manipulated.
 
 \subsection{Rolling average and distribution
 fitting}\label{rolling-average-and-distribution-fitting}
 
 To begin, a useful tool to analyze the overall trend of an extended
-period of time for such a random dataset is a \textbf{rolling average}.
-This is an alpha adjusted average where
-\[average.today = actual.yesterday*A + average.yesterday*(1 - A)\].
-Calculating the average for day \textbf{N} uses only data from day
-\textbf{N - 1} and earlier. This is done to prevent the average from
-being over-informed when constructing confidence intervals.
+period for such a random data set is a \textbf{rolling average}. This is
+an alpha adjusted average where \emph{average.today = actual.yesterday*A
++ average.yesterday*(1 - A)}. Calculating the average for day \textbf{N}
+uses only data from day \textbf{N - 1} and earlier. This is done to
+prevent the average from being over-informed when constructing
+confidence intervals.
 
 A has to be appropriately small so that the rolling average isn't
-completly changed for every outlier day, yet large enough to respond
+completely changed for every outlier day, yet large enough to respond
 quickly to the profit trend. All proceeding A's are set at 0.07.
 
 Now that we have an average to compare every day to, another valuable
-statistic to learn is the day-to-day variation in both datasets. For
+statistic to learn is the day-to-day variation in both data sets. For
 brevity, this analysis will only be done on the daily users, but the
 process is identical.
 
 A great way to do this is to fit our varied data to a series of
 plausible distributions and observe which distribution best represents
-the varience. Unfortunately these data sets exhibit trends which prevent
-us from simply measuring the varience between \emph{all} data points.
-This is a perfect use for our computed rolling average, and instead of
-simply measuring the varience between daily users, we can account for
-the trend by dividing each daily user data point by its corresponding
-user rolling average. This can be thought of as \textbf{Adjusting} our
-dataset to account for time-dependant trends, preserving the varience
-and yielding the following:
+the variance. Unfortunately, these data sets exhibit trends which
+prevent us from simply measuring the variance between \emph{all} data
+points. This is a perfect use for our computed rolling average, and
+instead of simply measuring the variance between daily users, we can
+account for the trend by dividing each daily user data point by its
+corresponding user rolling average. This can be thought of as
+\textbf{Adjusting} our data set to account for time-dependent trends,
+preserving the variance and yielding the following:
 
 \begin{center}\includegraphics{Readme_files/figure-latex/adjusted daily users plot-1} \end{center}
 
@@ -189,7 +189,7 @@ which is very unlikely, and practically infinite maximum.
 
 \begin{center}\includegraphics{Readme_files/figure-latex/User distribution fits-1} \end{center}
 
-As you can see from these plots, these functionns all look very similar,
+As you can see from these plots, these functions all look very similar,
 although the Q-Q plot points to the Dagum function being the best fit. A
 better way to cut through the subjectivity of selecting a distribution
 is summarizing with the Kolmogorov-Smirnov fitness test. Below is a
@@ -200,11 +200,11 @@ table with results for all five distributions.
 Distribution & Test.Statistic & P.value\tabularnewline
 \midrule
 \endhead
-Normal & 0.0511 & 0.0980\tabularnewline
-Gamma & 0.0347 & 0.4905\tabularnewline
-Weibull & 0.0633 & 0.0198\tabularnewline
-Dagum & 0.0151 & 0.9994\tabularnewline
-GEV & 0.0254 & 0.8518\tabularnewline
+Normal & 0.0395 & 0.2231\tabularnewline
+Gamma & 0.0231 & 0.8468\tabularnewline
+Weibull & 0.0519 & 0.0457\tabularnewline
+Dagum & 0.0157 & 0.9952\tabularnewline
+GEV & 0.0276 & 0.6573\tabularnewline
 \bottomrule
 \end{longtable}
 
@@ -216,11 +216,11 @@ our theory that the data fits a Dagum distribution very well.
 
 Below are the original sales and user charts, now with the rolling
 average (dark line) and 90\% confidence intervals (light lines)
-constructed from the Dagum distribution. This confidence interval is
-represents where 90\% of all datapoints will exist between. This is the
-first opportunity we have to see the story being told by the data.
-First, if you pay close attention to the dates of some of the peaks and
-valleys, there are four clear trends.
+constructed from the Dagum distribution. This confidence interval
+represents where 90\% of all data points will exist between. This is the
+first opportunity to see the story being told by the data. If you pay
+close attention to the dates of some of the peaks and valleys, there are
+four clear trends.
 
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi}.}
@@ -243,7 +243,7 @@ valleys, there are four clear trends.
 
 A very important thing to understand about a RedBubble store is that
 unique users have a direct relationship with daily sales. There are a
-few steps invloved to get from one to the other, and the easiest way to
+few steps involved to get from one to the other, and the easiest way to
 illustrate this path is to consider an average customer.
 
 Let's say Jim has decided he wants to buy a sticker for
@@ -266,15 +266,15 @@ out to complete his order. There is one more important random variable
 to consider, and that is summarized by \textbf{How much profit does each
 product produce?}. This is a very important factor, and one of the
 variables that the artist has the most control over, called \emph{what
-cost?}. It completly depends on the product, sale, and set margin for
+cost?}. It completely depends on the product, sale, and set margin for
 the artist but can range from \emph{0} to \emph{infinite}, weighted
 towards an average value dictated by the most commonly sold item.
 
 The sale is now complete. Jim, the \textbf{user}, has completed an
 \textbf{order} with the sticker and T-shirt representing multiple
 \textbf{units}, for some \textbf{profit}. This directional flow of
-actions results in much more varience on the profit end compared to the
-user end, and explains \#4 on our list of noticed trends.
+actions results in much more variance on the profit end compared to the
+user end and explains \#4 on our list of noticed trends.
 
 \subsection{Analysis of Factors}\label{analysis-of-factors}
 
@@ -282,19 +282,19 @@ user end, and explains \#4 on our list of noticed trends.
 
 The success of this store, or really any merchandise business, resides
 in how and what we change to influence these factors. To start, we can
-look at the implied fisrt factor: \emph{exposure}. This is where I would
+look at the implied first factor: \emph{exposure}. This is where I would
 have an absolute hay-day if I were privy to the data RedBubble collects
-internally. Before we can influence a customer interaction, they have to
+internally. Before we can influence a customer interaction, they must
 see the webpage.
 
 Unfortunately for the artists, there is very little that can be done to
 increase exposure. RedBubble is a wild-west implementation of the POD
-model: everyone uploads whatever they want and the cream rises to the
+model: everyone uploads whatever they want, and the cream rises to the
 top. One could argue that this is the best possible implementation,
 where the best designs get rewarded the most, but that doesn't
 necessarily happen.
 
-Redbubble designs get more ad-targets and raise higher in internal
+RedBubble designs get more ad-targets and raise higher in internal
 search rankings based on their sales record. What does this mean? A
 mediocre design that has been on the store for a while with modest sales
 numbers can be on the first page of search results whereas a great
@@ -303,20 +303,20 @@ in the later pages of a search result.
 
 If I was a betting man (a great stance for an aspiring analyst), I would
 say that search rank has a hell of a lot more to do with the success of
-a single design than the quality of that design. What ends up happenning
+a single design than the quality of that design. What ends up happening
 with this meritocratic approach is that page 1 designs stay on page 1
-entirely due to the fact that they sell better than page 2+ designs.
-Many times, I have uploaded a design only to sell a grand total of 0
-products within the fist several months of its existance. Then, if a I
-get lucky and a \textbf{single} person buys this design, it shoots up in
-the search rankings past all the other unbought designs. Suddenly, that
-design turns into a hit.
+entirely because they sell better than page 2+ designs. Many times, I
+have uploaded a design only to sell a grand total of 0 products within
+the fist several months of its existence. Then, if a I get lucky and a
+\textbf{single} person buys this design, it shoots up in the search
+rankings past all the other un-bought designs. Suddenly, that design
+turns into a hit.
 
-So to gain some autonomy over this seemingly unfair beginning of a
-design life-cycle, I batch uploaded a series of designs, \textbf{bought
-them all} with my second account, and spent the next few months making
-sales of all of these designs having been kick started higher in the
-search rankings.
+To gain some autonomy over this seemingly unfair beginning of a design
+life-cycle, I batch uploaded a series of designs, \textbf{bought them
+all} with my second account, and spent the next few months making sales
+of all of these designs having been kick started higher in the search
+rankings.
 
 For the average design in my store, the sales have slowly improved over
 time as each individual ranking creeps closer and closer to its rightful
@@ -332,14 +332,12 @@ next factor to consider is \emph{should I?}. As mentioned before, this
 is a random variable with possible outcomes \emph{yes} or \emph{no}.
 These can instead be thought of as \emph{1} or \emph{0}, with an
 expected value somewhere in between. This value represents the
-\textbf{probability of a user making a purchase}. This value can
-actually be plotted over time, as it is fairly easily represented as the
-\emph{average daily orders / average daily users}. This graph ranges
-from 0 - 1, representing the probability of each user buying a product.
+\textbf{probability of a user making a purchase} and is easily
+represented as the \emph{average daily orders / average daily users}.
 
 \begin{center}\includegraphics{Readme_files/figure-latex/daily Order per user plot-1} \end{center}
 
-This graph seems to be failry stable, and doesn't change in response to
+This graph seems to be fairly stable and doesn't change in response to
 developments in my store and added designs. Instead, there are two
 possible theories I have for the trend.
 
@@ -347,32 +345,31 @@ possible theories I have for the trend.
 \def\labelenumi{\arabic{enumi}.}
 \item
   The value is higher based on the quality of the design. This is
-  approximately constant for my store becuase my set of designs are all
+  approximately constant for my store because my set of designs are all
   very similar and most have existed since the start date of May 1st,
   2017. I would imaging talented designers would have this value higher
   than the \textasciitilde{}20\% purchase rate that I am showing.
 \item
-  The values fluctuate based on buyer desparation. I think it is no
+  The values fluctuate based on buyer desperation. I think it is no
   coincidence that the highest peak on this graph occurs in the month
-  leading up to Christmas. Buyers are looking for gifts for loved ones,
-  and are more likely to make a purchase because they either just want
-  to buy anything for them, aren't as scrutinous becuase they aren't
-  buying for themselves, or feel pressured from the in-site sales
-  advertisements all over the webpage at that time of year. The dip in
-  desparation after the holidays may also point to a lack of available
-  spending money for customers.
+  leading up to Christmas. Buyers are looking for gifts for loved ones
+  and are more likely to make a purchase because they either aren't as
+  scrutinous when they aren't buying for themselves or feel pressured
+  from the in-site sales advertisements all over the webpage at that
+  time of year. The dip in desperation after the holidays may also point
+  to a lack of available spending money for customers.
 \end{enumerate}
 
 \subsubsection{How Many?}\label{how-many}
 
-As mentioned before, the overwhelming majority of orders contain only a
-single unit. Below is a histogram of Units per Order.
+As mentioned before, most orders contain only a single unit. Below is a
+histogram of Units per Order.
 
 \begin{center}\includegraphics{Readme_files/figure-latex/units per order hist-1} \end{center}
 
 This isn't necessarily because users usually only buy a single item; in
-fact it is usually the opposite. RedBubble has cleverly made their
-products available at scaleable deals, discounting your whole order of
+fact, it is usually the opposite. RedBubble has cleverly made their
+products available at scale-able deals, discounting your whole order of
 stickers based on how many you decide to purchase.
 
 Barring differences in the exchange rate between USD and CAD, an average
@@ -403,13 +400,13 @@ advantage of these discounts. 76.8\% of all stickers are bought with the
 stickers for 25\% off discount, and only 3.7\% of stickers are purchased
 at full price.
 
-Why then are the majority of my orders just single stickers? The benefit
-of having such a huge open marketplace is that users have a ton of
-designs to choose from. This means that orders of 10+ stickers will very
-rarely have 2 designs by the same designer. The only reason people buy
-more than one of my designs in a single order is because most of my
-designs are in related series (for example, someone buys a Jasper and
-Banff sticker because they have been to both).
+Why then are most of my orders just single stickers? The benefit of
+having such a huge open marketplace is that users have a ton of designs
+to choose from. This means that orders of 10+ stickers will very rarely
+have 2 designs by the same designer. The only reason people buy more
+than one of my designs in a single order is because most of my designs
+are in related series (for example, someone buys a Jasper and Banff
+sticker because they have been to both).
 
 Unfortunately, just like exposure, there is very little that can be done
 to influence this factor. The only possible thing I have control over
