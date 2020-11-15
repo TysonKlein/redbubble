@@ -100,5 +100,9 @@ daily.data <- daily.data %>%
 
 #Save daily
 save(daily.data, file = "rda/daily-data.rda")
+<<<<<<< HEAD
 write.csv(daily.data, file = "data/daily-data.csv")
 
+=======
+write.csv(daily.data, file = "data/daily-data.csv")
+>>>>>>> 0a85e6c1827c25a83ca992410c8e8c03b80ea5c0

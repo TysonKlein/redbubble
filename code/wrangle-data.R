@@ -29,8 +29,12 @@ wrangled.data$Qty <- as.numeric(wrangled.data$Qty)
 wrangled.data <- wrangled.data %>% select(Date, Order.Number, Product.Type, 
                                           Work, Fulfillment.Country, Destination.Country, 
                                           Destination.State, Qty, Retail.Price, 
+<<<<<<< HEAD
                                           Manufacturers.Cut, Artists.Cut) %>% 
                                 filter(str_detect(tolower(Work), pattern = ""))
+=======
+                                          Manufacturers.Cut, Artists.Cut)
+>>>>>>> 0a85e6c1827c25a83ca992410c8e8c03b80ea5c0
 
 #Create data sets for the price and discount comparisom for stickers
 price.stratified <- wrangled.data %>% filter((Date > as.Date("2018-6-15") & Date < as.Date("2018-9-15")) | (Date > as.Date("2018-10-20")), Fulfillment.Country == "United States",Product.Type == "Sticker", Artists.Cut < 4.8)
@@ -191,14 +195,23 @@ linear.model <- lm(compare.data ~ trend.Redbubble + trend.NatPark + trend.Sticke
                    data = trend.data[1:nrow(daily.data),])
 linear.model %>% summary
 
+<<<<<<< HEAD
 plot(daily.data$Date, daily.data$mean.sales)
 sum(daily.data$sales)
 
 model <- create.model(linear.model, trend.data)
 model <- data.frame(Date = as.Date(min(as.numeric(daily.data$Date)):max(as.numeric(daily.data$Date)+365*years.back),as.Date("1970-01-01")), forecast = model)
+=======
+model <- create.model(linear.model, trend.data)
+model <- data.frame(Date = as.Date(min(as.numeric(daily.data$Date)):max(as.numeric(daily.data$Date)+365*years.back),as.Date("1970-01-01")), forecast = model)
+plot(model$forecast[1:nrow(daily.data)], compare.data, xlab = cor(model$forecast[1:nrow(daily.data)], compare.data))
+>>>>>>> 0a85e6c1827c25a83ca992410c8e8c03b80ea5c0
 mean(model$forecast[match( as.Date("2018-11-15"),model$Date):match( as.Date("2018-12-15"),model$Date)])
 
 #Save daily
 save(daily.data, file = "rda/daily-data.rda")
 write.csv(daily.data, file = "data/daily-data.csv")
+<<<<<<< HEAD
 
+=======
+>>>>>>> 0a85e6c1827c25a83ca992410c8e8c03b80ea5c0

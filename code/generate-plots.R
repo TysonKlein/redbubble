@@ -30,8 +30,11 @@ daily.sales.plot <- ggplot() +
   scale_y_continuous(name = "Profit ($ CAD)", breaks = seq(0, (round(max(daily.data$sales-5)/10)+1)*10, 10)) +
   plot.theme
 save(daily.sales.plot, file = "rda/daily-sales-plot.rda")
+<<<<<<< HEAD
 save(daily.sales.plot, file = "png/daily-sales-plot.png")
 ggsave("png/daily-sales-plot.png", plot = daily.sales.plot)
+=======
+>>>>>>> 0a85e6c1827c25a83ca992410c8e8c03b80ea5c0
 
 #Plot for Daily Sales + Mean sales + CI
 daily.sales.plot.A <- ggplot() + 
@@ -41,12 +44,19 @@ daily.sales.plot.A <- ggplot() +
   geom_line(data = daily.data, colour = 'red',alpha = 0.3, size = 1.5, aes(x=Date, y = sales.CI.lower)) +
   scale_x_date(date_breaks = "1 month", date_labels =  "%b %Y", minor_breaks = "1 month") +
   scale_y_continuous(name = "Profit ($ CAD)", breaks = seq(0, (round(max(daily.data$sales-5)/10)+1)*10, 10)) +
+<<<<<<< HEAD
   annotate("segment", x = as.Date("2019-04-27"), xend = as.Date("2018-11-24"), y = 110, yend = 104, colour = "black", size=1, arrow=arrow()) +
   annotate("text", x = as.Date("2019-04-27"), y = 114, label = "Cyber Monday" , color="black", size=3 , fontface="bold") +
   annotate("segment", x = as.Date("2019-04-27"), xend = as.Date("2019-12-02"), y = 110, yend = 93, colour = "black", size=1, arrow=arrow()) +
   plot.theme
 save(daily.sales.plot.A, file = "rda/daily-sales-plot-A.rda")
 ggsave("png/daily-sales-plot-A.png", plot = daily.sales.plot.A)
+=======
+  annotate("segment", x = as.Date("2018-9-27"), xend = as.Date("2018-11-24"), y = 85, yend = 103, colour = "black", size=1, arrow=arrow()) +
+  annotate("text", x = as.Date("2018-9-27"), y = 80, label = "Cyber Monday" , color="black", size=3 , fontface="bold") +
+  plot.theme
+save(daily.sales.plot.A, file = "rda/daily-sales-plot-A.rda")
+>>>>>>> 0a85e6c1827c25a83ca992410c8e8c03b80ea5c0
 
 #Plot for Daily Users
 daily.users.plot <- ggplot() + 
@@ -55,7 +65,10 @@ daily.users.plot <- ggplot() +
   scale_y_continuous(name = "Users", breaks = seq(0, (round(max(daily.data$users-5)/10)+1)*10, 10)) +
   plot.theme
 save(daily.users.plot, file = "rda/daily-users-plot.rda")
+<<<<<<< HEAD
 ggsave("png/daily-users-plot.png", plot = daily.users.plot)
+=======
+>>>>>>> 0a85e6c1827c25a83ca992410c8e8c03b80ea5c0
 
 #Plot for Daily Users adjusted
 daily.users.adjusted.plot <- ggplot() + 

@@ -2,9 +2,13 @@
 title: "Harvard Data Science Capstone"
 author: "Tyson Klein"
 date: "October 22, 2018"
+<<<<<<< HEAD
 output:
   html_document:
     df_print: paged
+=======
+output: pdf_document
+>>>>>>> 0a85e6c1827c25a83ca992410c8e8c03b80ea5c0
 ---
 
 ```{r setup, include=FALSE}
