@@ -24,7 +24,7 @@ the artist. You upload your designs as images and they do everything
 else. This means that all sales made are pure profit on the artists
 side.
 
-About a year and a half ago I opened [my Redbubble
+In March of 2017 I opened [my Redbubble
 store](https://www.redbubble.com/people/tysonk?ref=account-nav-dropdown&asc=u).
 The specifics of my store aren’t entirely important to this report, but
 there are some important details that will emerge again later. Most
@@ -124,10 +124,10 @@ first opportunity to see the story being told by the data. If you pay
 close attention to the dates of some of the peaks and valleys, there are
 four clear trends.
 
-1.  Both tend to be higher during the late summer months.
-2.  Both tend to be higher during mid-November to mid-December.
-3.  Both, in general, increase over time.
-4.  There is less variance in daily users than daily sales.
+**1. Both tend to be higher during the late summer months.** **2. Both
+tend to be higher during mid-November to mid-December.** **3. Both, in
+general, increase over time.** **4. There is less variance in daily
+users than daily sales.**
 
 <img src="Readme_files/figure-gfm/daily sales and user plot with rolling average and CI-1.png" style="display: block; margin: auto;" /><img src="Readme_files/figure-gfm/daily sales and user plot with rolling average and CI-2.png" style="display: block; margin: auto;" />
 
@@ -300,3 +300,102 @@ to influence this factor. The only possible thing I have control over
 for this *how many?* factor is to make various series of related designs
 on my store, and making related designs navigable to each other via
 RedBubble’s Collection feature.
+
+## Modelling Daily Sales
+
+To quickly revisit our 4 noticed trends:  
+**1. Both tend to be higher during the late summer months.**  
+**2. Both tend to be higher during mid-November to mid-December.**  
+**3. Both, in general, increase over time.**  
+**4. There is less variance in daily users than daily sales.**
+
+We now have a reasonable explanation for 3 and 4, but to better
+understand 1 and 2 we have to analyze seasonal trends in the data. The
+theory I have about both of these trends is that Redbubble is a popular
+online retailer that benefits from a black friday-Chritmas boost in
+sales, and that the content of my store (National Parks) is more popular
+during the summer. Lucky for us, Google Trends data enables us to
+directly compare the relative popularity of each of these ideas and more
+over the lifetime of my store.
+
+For example, here is the Google trends data for the relative search
+popularity of National Parks over the past 5 years: ![google trends
+National Parks](png/googleTrendsNationalParks.PNG) It may be a little
+hard to tell, but this is showing a similar rise in the mid to late
+summer months as both our sales and user trends. Similarly, here is the
+same chart for relative popularity of the search category ‘Redbubble’:
+![google trends Redbubble](png/googleTrendsRedbubble.PNG) This is also
+showing a similar bump to the sales and user data during mid
+November-December.
+
+Using this data (and other data that may help explain trends 1 and 2),
+we can construct a model to predict the sales figures one year in the
+future. The one year prediction is especially apt in this scenario
+because seasonal peaks and valleys are apparent in most of the google
+trends data related to my Redbubble store, and hidden non seasonal
+trends may help explain more of trend \#3.
+
+The following search trends were used to help construct this model:
+
+**Redbubble (company** **National Park (topic)**  
+**Weekend**  
+**Sticker**  
+**Shopping (topic)**  
+**Road trip**
+
+These were all assigned a daily value between 0 and 100 that represents
+the relative popularity of that term on that given day. Then, these
+terms were fed into a linear model with some other data (day of week,
+day of month, days since May 1st, 2017) and were all fitted to the input
+daily sales. Since we are attempting to create a year forecast, the
+sales data used a linear combination of factors from 365 days prior to
+fit the model.
+
+Below is the resulting linear model:
+
+|                  |  Estimate | Standard Error |   t value | p value |
+| :--------------- | --------: | -------------: | --------: | ------: |
+| (Intercept)      | \-28.7108 |         3.1021 |  \-9.2552 |  0.0000 |
+| trend.Redbubble  |    0.3285 |         0.0165 |   19.8837 |  0.0000 |
+| trend.NatPark    |    0.2654 |         0.0176 |   15.0384 |  0.0000 |
+| trend.RoadTrip   |  \-0.1725 |         0.0155 | \-11.1475 |  0.0000 |
+| trend.Sticker    |    0.0232 |         0.0353 |    0.6589 |  0.5101 |
+| trend.Shopping   |    0.2822 |         0.0200 |   14.0907 |  0.0000 |
+| trend.Weekend    |  \-0.0050 |         0.0127 |  \-0.3905 |  0.6962 |
+| trend.Linear     |    0.0099 |         0.0006 |   16.7749 |  0.0000 |
+| trend.dayofweek  |  \-1.0688 |         1.6529 |  \-0.6466 |  0.5180 |
+| trend.dayofmonth |  \-0.6336 |         1.6097 |  \-0.3936 |  0.6939 |
+
+The P values eliminate some trends, but in general the analysis seems
+sound. Applying this model to our real data to create a forecast based
+on data from 1 year prior is very useful for doing A/B testing, as long
+as this model is reliable. Here is the forecast (blue) compared to the
+actual sales data (green) for the entire duration of the Redbubble
+store. The line in red is simply the difference between actual and
+forecast:
+
+<img src="Readme_files/figure-gfm/Modelled data vs real data-1.png" style="display: block; margin: auto;" />
+
+Our model matches the real sales data pretty close here, but you may
+notice that in recent times the forecast is actually a bit off. Let’s
+take a closer look at just the error:
+
+<img src="Readme_files/figure-gfm/Modelled data error-1.png" style="display: block; margin: auto;" />
+
+Aside from some spikes in the graph around black friday/cyber monday in
+November, the model is well within $10 of the real sales data. However,
+some extreme circumstances in 2020 have made this model less accurate
+especially during the spring and late summer months. It appears as
+though sales were quite a bit lower than forecasted in the March - May
+timespan in 2020. This makes a lot of sense, since people were more
+concerned with rent and food than buying stickers on the internet.
+However there is also a reverse trend recently: notice the positive
+error in the late summer and fall months of 2020. This means that real
+sales have actually been out-performing the forecast.
+
+My theory for this is that people are actually more willing to travel to
+a National park during a pandemic, since so many other competing travel
+options are now off the table. Also, maybe they are less willing to
+brave the National Park gift shop on their way out and instead opt to
+search on the internet for souvenirs. Either way, this is one hell of a
+way to throw off a model like this.

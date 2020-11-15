@@ -1,6 +1,7 @@
 library(VGAM)#for dagum functions
 library(tidyverse)
 library(lubridate)
+library(dplyr)
 
 if (is.null(rstudioapi::getActiveDocumentContext()))
 {
@@ -154,10 +155,12 @@ years.back <- 1
 trend.data <- data.frame(Date = min(as.numeric(daily.data$Date)):max(as.numeric(daily.data$Date)+365*years.back))
 trend.data$Date <- as.Date(trend.data$Date, as.Date("1970-01-01"))
 
+trend.data
+
 for (i in 1:nrow(trend.data)) {
   trend.data$trend.Redbubble[i] =  daily.trend$Redbubble[match(trend.data$Date[i]-years.back*365, daily.trend$Date)]
-  trend.data$trend.RedbubbleW[i] =  daily.trend$RedbubbleW[match(trend.data$Date[i]-years.back*365, daily.trend$Date)]
   trend.data$trend.NatPark[i] = daily.trend$National.Park[match(trend.data$Date[i]-years.back*365 - 9, daily.trend$Date)]
+  trend.data$trend.RoadTrip[i] = daily.trend$Road.Trip[match(trend.data$Date[i]-years.back*365, daily.trend$Date)]
   trend.data$trend.Sticker[i] =  daily.trend$Sticker[match(trend.data$Date[i]-years.back*365, daily.trend$Date)]
   trend.data$trend.Shopping[i] = daily.trend$Shopping[match(trend.data$Date[i]-years.back*365, daily.trend$Date)]
   trend.data$trend.Weekend[i] = daily.trend$Weekend[match(trend.data$Date[i]-years.back*365 - 3, daily.trend$Date)]
@@ -185,20 +188,37 @@ for (i in 1:nrow(trend.data)) {
 }
 
 compare.data <-daily.data$mean.sales
-linear.model <- lm(compare.data ~ trend.Redbubble + trend.NatPark + trend.Sticker
+linear.model <- lm(compare.data ~ trend.Redbubble + trend.NatPark + trend.RoadTrip + trend.Sticker
                    + trend.Shopping + trend.Weekend + trend.Linear
                    + trend.dayofweek + trend.dayofmonth,
                    data = trend.data[1:nrow(daily.data),])
-linear.model %>% summary
+lm <- linear.model %>% summary()
+lm$coefficients
 
 plot(daily.data$Date, daily.data$mean.sales)
 sum(daily.data$sales)
 
 model <- create.model(linear.model, trend.data)
-model <- data.frame(Date = as.Date(min(as.numeric(daily.data$Date)):max(as.numeric(daily.data$Date)+365*years.back),as.Date("1970-01-01")), forecast = model)
-mean(model$forecast[match( as.Date("2018-11-15"),model$Date):match( as.Date("2018-12-15"),model$Date)])
+model <- data.frame(Date = as.Date(min(as.numeric(daily.data$Date)):max(as.numeric(daily.data$Date)+365*years.back),as.Date("1970-01-01")),
+                    forecast = model,
+                    actual = 0,
+                    error = 0)
+model<- na.omit(model)
+for (i in 1:nrow(model)) {
+  model$actual[i] = model$actual[i] + daily.data$mean.sales[i]
+  model$error[i] = model$actual[i] - model$forecast[i]
+}
+model<- na.omit(model)
 
 #Save daily
 save(daily.data, file = "rda/daily-data.rda")
 write.csv(daily.data, file = "data/daily-data.csv")
 
+#Save model
+save(model, file = "rda/model.rda")
+write.csv(model, file = "data/model.csv")
+lm <- linear.model %>% summary()
+linear.model.disp <- data.frame(lm$coefficients)
+colnames(linear.model.disp) <- c("Estimate", "Standard Error", "t value", "p value")
+save(linear.model.disp, file = "rda/linear-model-disp.rda")
+save(linear.model, file = "rda/linear-model.rda")

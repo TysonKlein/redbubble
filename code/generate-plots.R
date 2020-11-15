@@ -7,7 +7,7 @@ library(scales)
 require(reshape2)
 
 
-#Set the path to be correctt
+#Set the path to be correct
 if (is.null(rstudioapi::getActiveDocumentContext()))
 {
   script.dir <- dirname(sys.frame(1)$ofile)
@@ -16,7 +16,7 @@ if (is.null(rstudioapi::getActiveDocumentContext()))
 }else setwd(dirname(rstudioapi::getActiveDocumentContext()$path))
 setwd("..")
 
-#Load the dataset for Daily plots
+#Load the data set for Daily plots
 load(file = "rda/daily-data.rda")
 
 #Set the plot theme for all following plots
@@ -160,3 +160,25 @@ unit.profit.hist.with.discount <- ggplot(,aes(x = price.stratified$Artists.Cut))
   scale_x_continuous(breaks = seq(2, 4.25, 0.25),labels = dollar_format(prefix = "$"))
 save(unit.profit.hist.with.discount, file = "rda/unit-profit-hist-with-discount.rda")
 
+#Load the model for forecasting plots
+load(file = "rda/model.rda")
+melted.model = melt(model, id=c("Date"))
+
+model.sales.plot <- ggplot(melted.model) + 
+  geom_line(aes(x=Date, y=value, colour=variable), size = 1.5) +
+  scale_colour_manual(values=c("blue","green","red")) +
+  scale_x_date(date_breaks = "1 month", date_labels =  "%b %Y", minor_breaks = "1 month") +
+  scale_y_continuous(name = "Profit ($ CAD)", breaks = seq(-20, (round((max(model$forecast)-5)/10)+1)*10, 10)) +
+  plot.theme
+save(model.sales.plot, file = "rda/model-sales-plot.rda")
+
+model.sales.plot
+
+model.error.plot <- ggplot() + 
+  geom_line(data = model, colour = 'red', size = 1.5, alpha = 0.5, aes(x=Date, y = error)) +
+  geom_smooth(data = model, method = "gam", formula = y ~ s(x, bs = "cs"), colour = 'red', size = 2, aes(x=Date, y = error)) +
+  scale_x_date(date_breaks = "1 month", date_labels =  "%b %Y", minor_breaks = "1 month") +
+  scale_y_continuous(name = "Model Error ($ CAD)", breaks = seq((round((min(model$error)-5)/10)+1)*10-5, (round((max(model$error)-5)/10)+1)*10, 5)) +
+  plot.theme
+model.error.plot
+save(model.error.plot, file = "rda/model-error-plot.rda")
