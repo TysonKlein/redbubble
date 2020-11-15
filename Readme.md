@@ -1,16 +1,18 @@
-Harvard Data Science Capstone
+Redbubble ecommerce data analysis
 ================
 Tyson Klein
-October 22, 2018
+November 15th, 2020
 
-\#Analysis of RedBubble.com sales by TysonK
+## Analysis of RedBubble.com sales by Tyson Klein
 
-\#\#Running this Analysis To recreate this analysis at home, you can
-clone this repo and open this project in Rstudio, then run the R scripts
-in the following order: package-installer.r -\> wrangle-data.r -\>
-distribution-analysis.r -\> generate-plots.r -\> then Knit Readme.Rmd
+### Running this Analysis
 
-\#\#An Introdution
+To recreate this analysis at home, you can clone this repo and open this
+project in Rstudio, then run the R scripts in the following order:
+package-installer.r -\> wrangle-data.r -\> distribution-analysis.r -\>
+generate-plots.r -\> then Knit Readme.Rmd
+
+### An Introdution
 
 RedBubble is one of the longest running and diverse Print-On-Demand
 (POD) art websites in the world, offering artists everywhere the
@@ -39,7 +41,7 @@ my most successful item was the sticker.
 To date, stickers account for 98.5% of all items sold and 96.2% of all
 profit.
 
-\#\#Daily Users and Profit
+### Daily Users and Profit
 
 Below is the profit per day of my store since May 1st, 2017, measured in
 Canadian Dollars(red), and the same graph instead measuring unique daily
@@ -52,7 +54,7 @@ represent busy and slow periods for the store, but before we can better
 quantify *how* busy or slow, this data must be better understood and
 manipulated.
 
-\#\#Rolling average and distribution fitting
+### Rolling average and distribution fitting
 
 To begin, a useful tool to analyze the overall trend of an extended
 period for such a random data set is a **rolling average**. This is an
@@ -112,7 +114,7 @@ While the KS test only eliminated the Weibull distribution on a p \<
 0.05 threshold, we can see that the KS test also supports our theory
 that the data fits a Dagum distribution very well.
 
-\#\#Naive Trend Analysis
+\#\#E Naive Trend Analysis
 
 Below are the original sales and user charts, now with the rolling
 average (dark line) and 90% confidence intervals (light lines)
@@ -129,7 +131,7 @@ four clear trends.
 
 <img src="Readme_files/figure-gfm/daily sales and user plot with rolling average and CI-1.png" style="display: block; margin: auto;" /><img src="Readme_files/figure-gfm/daily sales and user plot with rolling average and CI-2.png" style="display: block; margin: auto;" />
 
-\#\#Factors to Consider
+### Factors to Consider
 
 A very important thing to understand about a RedBubble store is that
 unique users have a direct relationship with daily sales. There are a
@@ -166,9 +168,9 @@ with the sticker and T-shirt representing multiple **units**, for some
 variance on the profit end compared to the user end and explains \#4 on
 our list of noticed trends.
 
-\#\#Analysis of Factors
+## Analysis of Factors
 
-\#\#\#Exposure
+### Exposure
 
 The success of this store, or really any merchandise business, resides
 in how and what we change to influence these factors. To start, we can
@@ -215,7 +217,7 @@ after some time the search ranking stabilizes. I believe this is one of
 the main influences of \#3 of the noticed trends: Both users and Sales,
 in general, increase over time.
 
-\#\#\#Should I?
+### Should I?
 
 Assuming the exposure of our design leads a user to click on it, the
 next factor to consider is *should I?*. As mentioned before, this is a
@@ -246,7 +248,7 @@ possible theories I have for the trend.
     time of year. The dip in desperation after the holidays may also
     point to a lack of available spending money for customers.
 
-\#\#\#How Many?
+### How Many?
 
 As mentioned before, most orders contain only a single unit. Below is a
 histogram of Units per Order.
@@ -298,5 +300,3 @@ to influence this factor. The only possible thing I have control over
 for this *how many?* factor is to make various series of related designs
 on my store, and making related designs navigable to each other via
 RedBubble’s Collection feature.
-
-\#\#Coming Soon

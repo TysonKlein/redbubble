@@ -1,7 +1,7 @@
 ---
-title: "Harvard Data Science Capstone"
+title: "Redbubble ecommerce data analysis"
 author: "Tyson Klein"
-date: "October 22, 2018"
+date: "November 15th, 2020"
 output: github_document
 ---
 
@@ -12,13 +12,13 @@ library(VGAM)#for dagum functions
 library(SpatialExtremes)#for gev functions
 ```
 
-#Analysis of RedBubble.com sales by TysonK
+## Analysis of RedBubble.com sales by Tyson Klein
 
-##Running this Analysis
+### Running this Analysis
 To recreate this analysis at home, you can clone this repo and open this project in Rstudio, then run the R scripts in the following order:
 package-installer.r -> wrangle-data.r -> distribution-analysis.r -> generate-plots.r -> then Knit Readme.Rmd
 
-##An Introdution
+### An Introdution
 
 RedBubble is one of the longest running and diverse Print-On-Demand (POD) art websites in the world, offering artists everywhere the opportunity to make money by selling their works on a range of products without having to get involved with any of the logistics.
 
@@ -30,7 +30,7 @@ My store began to gain traction and some interesting patterns began to emerge. F
 
 To date, stickers account for 98.5% of all items sold and 96.2% of all profit.
 
-##Daily Users and Profit
+### Daily Users and Profit
 
 Below is the profit per day of my store since May 1st, 2017, measured in Canadian Dollars(red), and the same graph instead measuring unique daily users (turquoise).
 ```{r daily sales and user plot,fig.align='center',  echo = FALSE, fig.width=10, fig.height=4}
@@ -42,7 +42,7 @@ daily.users.plot
 
 Clearly a trend exists with both data sets. First, there are some noticeable peaks and valleys that seem to line up with both. These represent busy and slow periods for the store, but before we can better quantify *how* busy or slow, this data must be better understood and manipulated.
 
-##Rolling average and distribution fitting
+### Rolling average and distribution fitting
 
 To begin, a useful tool to analyze the overall trend of an extended period for such a random data set is a **rolling average**. This is an alpha adjusted average where *average.today = actual.yesterday\*A + average.yesterday\*(1 - A)*. Calculating the average for day **N** uses only data from day **N - 1** and earlier. This is done to prevent the average from being over-informed when constructing confidence intervals.
 
@@ -78,7 +78,7 @@ kable(ks.results, digits=4)
 
 While the KS test only eliminated the Weibull distribution on a p < 0.05 threshold, we can see that the KS test also supports our theory that the data fits a Dagum distribution very well.
 
-##Naive Trend Analysis
+##E Naive Trend Analysis
 
 Below are the original sales and user charts, now with the rolling average (dark line) and 90% confidence intervals (light lines) constructed from the Dagum distribution. This confidence interval represents where 90% of all data points will exist between. This is the first opportunity to see the story being told by the data. If you pay close attention to the dates of some of the peaks and valleys, there are four clear trends.
 
@@ -94,7 +94,7 @@ daily.sales.plot.A
 daily.users.plot.A
 ```
 
-##Factors to Consider
+### Factors to Consider
 
 A very important thing to understand about a RedBubble store is that unique users have a direct relationship with daily sales. There are a few steps involved to get from one to the other, and the easiest way to illustrate this path is to consider an average customer.
 
@@ -106,9 +106,9 @@ Now that Jim has, say, a sticker and a T-shirt in his cart, he checks out to com
 
 The sale is now complete. Jim, the **user**, has completed an **order** with the sticker and T-shirt representing multiple **units**, for some **profit**. This directional flow of actions results in much more variance on the profit end compared to the user end and explains #4 on our list of noticed trends.
 
-##Analysis of Factors
+## Analysis of Factors
 
-###Exposure
+### Exposure
 
 The success of this store, or really any merchandise business, resides in how and what we change to influence these factors. To start, we can look at the implied first factor: *exposure*. This is where I would have an absolute hay-day if I were privy to the data RedBubble collects internally. Before we can influence a customer interaction, they must see the webpage.
 
@@ -122,7 +122,7 @@ To gain some autonomy over this seemingly unfair beginning of a design life-cycl
 
 For the average design in my store, the sales have slowly improved over time as each individual ranking creeps closer and closer to its rightful place in the search results. Often that happens to be on page 1, but after some time the search ranking stabilizes. I believe this is one of the main influences of #3 of the noticed trends: Both users and Sales, in general, increase over time.
 
-###Should I?
+### Should I?
 
 Assuming the exposure of our design leads a user to click on it, the next factor to consider is *should I?*.  As mentioned before, this is a random variable with possible outcomes *yes* or *no*. These can instead be thought of as *1* or *0*, with an expected value somewhere in between. This value represents the **probability of a user making a purchase** and is easily represented as the *average daily orders / average daily users*.
 
@@ -137,7 +137,7 @@ This graph seems to be fairly stable and doesn't change in response to developme
 
 2. The values fluctuate based on buyer desperation. I think it is no coincidence that the highest peak on this graph occurs in the month leading up to Christmas. Buyers are looking for gifts for loved ones and are more likely to make a purchase because they either aren’t as scrutinous when they aren't buying for themselves or feel pressured from the in-site sales advertisements all over the webpage at that time of year. The dip in desperation after the holidays may also point to a lack of available spending money for customers.
 
-###How Many?
+### How Many?
 
 As mentioned before, most orders contain only a single unit. Below is a histogram of Units per Order.
 
@@ -171,5 +171,3 @@ This illustrates the discount strategy RedBubble is using. When you have one sti
 Why then are most of my orders just single stickers? The benefit of having such a huge open marketplace is that users have a ton of designs to choose from. This means that orders of 10+ stickers will very rarely have 2 designs by the same designer. The only reason people buy more than one of my designs in a single order is because most of my designs are in related series (for example, someone buys a Jasper and Banff sticker because they have been to both).
 
 Unfortunately, just like exposure, there is very little that can be done to influence this factor. The only possible thing I have control over for this *how many?* factor is to make various series of related designs on my store, and making related designs navigable to each other via RedBubble's Collection feature.
-
-##Coming Soon
